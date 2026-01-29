@@ -17,4 +17,8 @@ public class SlotInventario
     {
         quantidade += qtd;
     }
+    public void SubtrairQuantidade(int qtd)
+    {
+        quantidade -= qtd;
+    }
 }
