@@ -27,11 +27,11 @@ public class TesteInventario : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S))
+        if(Input.GetKeyDown(KeyCode.C))
         {
             sistemaInventario.SubtrairItem(pocao, 1);
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             sistemaInventario.SubtrairItem(espada, 1);
         }
