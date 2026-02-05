@@ -61689,7 +61689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventarioOnOff
   PainelInventario: {fileID: 455007989}
-  PainelCrafting: {fileID: 0}
+  PainelCrafting: {fileID: 1808531030}
 --- !u!4 &2115625441
 Transform:
   m_ObjectHideFlags: 0
