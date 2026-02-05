@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DadosItem
   nomeDoItem: Escudo de Madeira
   id: Escudo_Madeira
-  icone: {fileID: 0}
+  icone: {fileID: 1548440048, guid: 6419c01d9183e034896fe1a2164ae764, type: 3}
   descricao: Um simples escudo que dimui o dano tomado por 2 pontos
   valorEmOuro: 10
   ehEmpilavel: 0

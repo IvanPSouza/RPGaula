@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e255f7a93c420f048946396fefd85066, type: 3}
-  m_Name: Rumus
+  m_Name: Biscoito
   m_EditorClassIdentifier: Assembly-CSharp::DadosItem
-  nomeDoItem: Pote de Rumus
-  id: Rumus
-  icone: {fileID: 0}
-  descricao: Um pote com pasta de Rumus, recupera 10 de vida
+  nomeDoItem: Biscoito
+  id: Biscoito
+  icone: {fileID: 424145493011907174, guid: 6419c01d9183e034896fe1a2164ae764, type: 3}
+  descricao: Um biscoito de chocolate, recupera 10 de vida
   valorEmOuro: 1
   ehEmpilavel: 1

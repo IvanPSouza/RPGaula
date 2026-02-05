@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DadosItem
   nomeDoItem: "Po\xE7\xE3o de Vida"
   id: Item_pocao_vida
-  icone: {fileID: 0}
+  icone: {fileID: 1962243099, guid: 6419c01d9183e034896fe1a2164ae764, type: 3}
   descricao: "Po\xE7\xE3o magica que restaura 50 pontos de vida do jogador"
   valorEmOuro: 5
   ehEmpilavel: 1
