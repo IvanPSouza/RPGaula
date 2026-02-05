@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e255f7a93c420f048946396fefd85066, type: 3}
+  m_Name: FlechaSimples
+  m_EditorClassIdentifier: Assembly-CSharp::DadosItem
+  nomeDoItem: Flecha
+  id: FlechaSimples
+  icone: {fileID: 8221628451177193175, guid: 6419c01d9183e034896fe1a2164ae764, type: 3}
+  descricao: "Uma flecha padr\xE3o"
+  valorEmOuro: 5
+  ehEmpilavel: 1

@@ -95,6 +95,20 @@ public class SistemaInventario : MonoBehaviour
         }
     }
 
+    public bool TemItem(DadosItem item, int qtd)
+    {
+        //Verifica se tem oitem e quanidade necessaria dentro do inventario
+        foreach(SlotInventario slot in inventario)
+        {
+            if(slot.dadosDoItem == item && slot.quantidade >= qtd)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private void OnValidate()
     {
         if(Application.isPlaying && onInventarioMudou != null)
