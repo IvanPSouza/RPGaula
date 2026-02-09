@@ -61122,7 +61122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1260243007}
   m_Layer: 0
-  m_Name: PontoB (1)
+  m_Name: PontoC
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -61615,6 +61615,7 @@ MonoBehaviour:
   pontosDePatrulha:
   - {fileID: 2139323892}
   - {fileID: 576331975}
+  - {fileID: 1260243007}
   indicePontoAtual: 0
   tempoDeEspera: 2
   cronometroEspera: 0
