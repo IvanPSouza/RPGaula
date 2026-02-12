@@ -21,20 +21,40 @@ public class ControladorInimigo : MonoBehaviour
     public float tempoDeEspera = 2.0f;
     public float cronometroEspera = 0f;
 
+    [Header("Sensores")]
+    public float raioVisao = 5f; // Distancia que começa perseguir
+    public float raioPerseguicao = 8f; //Distancia para desistir da perseguição
+    public float distanciaAtaque = 1f; //Distancia para iniciar o combate
+
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-
+    private GameObject jogador; //Armazena os dados do jogador
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         //Ao iniviar a partida começa parado (idle)
-        estadoAtual = EstadoInimigo.Parado;
+        estadoAtual = EstadoInimigo.Patrulha;
+
+        //Procura pelo GameObject com a tag Player
+        if(jogador == null )
+        {
+            jogador = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 
     private void Update()
     {
+        //0. Segurança. Se o jogador morrer ou não foi encontrado
+        if(jogador == null)
+        {
+            return;
+        }
+
+        //1. Calculando a distancia entre os gameobjects
+        float distancia = Vector2.Distance(transform.position, jogador.transform.position);
+
         switch(estadoAtual)
         {
             case EstadoInimigo.Parado:
@@ -42,14 +62,77 @@ public class ControladorInimigo : MonoBehaviour
                 //Debug.Log($"{gameObject.name} mudando para o estado {estadoAtual}");
                 break;
             case EstadoInimigo.Patrulha:
+                //Regra 01: Se o jogador entrou no raio de visão
+                //Toca a animação em velocidade normal
+                animator.speed = 1f;
+                if (distancia < raioVisao)
+                {
+                    estadoAtual = EstadoInimigo.Perseguicao;
+                }
+
                 animator.SetBool("Andando", true);
                 //Debug.Log($"{gameObject.name} mudando para o estado {estadoAtual}");
                 Patrulhar();
                 break;
             case EstadoInimigo.Perseguicao:
+                //Regra 02: O jogador saiu do raio de perseguição
+                //Toca a animação em velocidade 20% mais rapida
+                animator.speed = 1.2f;
+                if (distancia > raioPerseguicao)
+                {
+                    estadoAtual = EstadoInimigo.Patrulha;
+                }
+                //Regra 03: Inimigo alcançou o jogador. Inicio de combate
+                if(distancia < distanciaAtaque)
+                {
+                    //Inicio do combate
+                    IniciarCombate();
+                }
+                else
+                {
+                    //Continua a perseguição
+                    Perseguir();
+                }
                 animator.SetBool("Andando", true);
                 //Debug.Log($"{gameObject.name} mudando para o estado {estadoAtual}");
                 break;
+        }
+    }
+
+    private void IniciarCombate()
+    {
+        //Por enquanto apenas para o jogo.
+        Time.timeScale = 0f;
+    }
+
+    private void Perseguir()
+    {
+        //1. Calcular a direção
+        Vector3 direcao = (jogador.transform.position - transform.position).normalized; // Normalized = Pega apenas a direção, não a distancia
+
+        //2. Atualiza o animator
+        animator.SetBool("Andando", true);
+        animator.SetFloat("Horizontal", direcao.x);
+        animator.SetFloat("Vertical", direcao.y);
+
+        //3. Flip
+        Flip(direcao);
+
+        //Mover inimigo
+
+        /*-ajustar a movimentação do inimigopara RIGIDBODY */
+        transform.position = Vector2.MoveTowards(transform.position, jogador.transform.position, velocidade * Time.deltaTime * 1.2f);
+    }
+
+    private void Flip(Vector3 direcao)
+    {
+        if (direcao.x < -0.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (direcao.x > 0.1)
+        {
+            spriteRenderer.flipX = false;
         }
     }
 
@@ -95,17 +178,28 @@ public class ControladorInimigo : MonoBehaviour
             animator.SetFloat("Vertical", direcao.y);
 
             //4. Flip
-            if(direcao.x < -0.1f)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if(direcao.x > 0.1)
-            {
-                spriteRenderer.flipX = false;
-            }
+            Flip(direcao);
 
             //5. Mover
             transform.position = Vector2.MoveTowards(transform.position, alvo.position, velocidade * Time.deltaTime);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        //Desenha o raiode visão (vermelho)
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, raioVisao);
+
+        //Desenha o raio da perseguição (Amarelo)
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, raioPerseguicao);
+
+        //Desenha a dstancia entre inimigo e o jogador (Azul)
+        Gizmos.color = Color.blue;
+        if (jogador != null)
+        {
+            Gizmos.DrawLine(transform.position, jogador.transform.position);
         }
     }
 }
