@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e7d142c8683fa46ab8ddb80d55db24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControladorInimigo
-  estadoAtual: 1
+  estadoAtual: 0
   velocidade: 3
   pontosDePatrulha:
   - {fileID: 0}
@@ -204,4 +204,5 @@ MonoBehaviour:
   raioVisao: 4
   raioPerseguicao: 8
   distanciaAtaque: 1
-  meuNomeID: Treant
+  prefabDaArena: {fileID: 2223910454923011626, guid: b7ab46604644e6d4ea33a79e776c3d2a, type: 3}
+  prefabInimigo: {fileID: 2223910454923011626, guid: b7ab46604644e6d4ea33a79e776c3d2a, type: 3}

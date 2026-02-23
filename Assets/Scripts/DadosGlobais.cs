@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class DadosGlobais
 {
-    // Variável estática: pertence ao JOGO, não à cena.
-    public static string inimigoParaGerar; // Guarda "Mole" ou "Treant"
+    // Guarda a referência direta do arquivo do projeto (O Prefab)
+    public static List<GameObject> prefabsInimigos = new List<GameObject>();
 }
