@@ -102,6 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1634634991543532036}
+  - component: {fileID: 4932467056639575598}
   m_Layer: 0
   m_Name: PulgaoPatrulha
   m_TagString: Untagged
@@ -128,6 +129,18 @@ Transform:
   - {fileID: 6309448515028621989}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4932467056639575598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6753316396532610833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8caacea2d01a214185df2accdd67c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IniciadorBatalha
 --- !u!1001 &8901843127707579564
 PrefabInstance:
   m_ObjectHideFlags: 0

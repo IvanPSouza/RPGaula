@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2790645917955179310}
   - component: {fileID: 1378025921756054203}
   - component: {fileID: 2090858508182186000}
+  - component: {fileID: -5297837734000970321}
   m_Layer: 0
   m_Name: Arvere
   m_TagString: Untagged
@@ -206,3 +207,15 @@ MonoBehaviour:
   distanciaAtaque: 1
   prefabDaArena: {fileID: 2223910454923011626, guid: b7ab46604644e6d4ea33a79e776c3d2a, type: 3}
   prefabInimigo: {fileID: 2223910454923011626, guid: b7ab46604644e6d4ea33a79e776c3d2a, type: 3}
+--- !u!114 &-5297837734000970321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4231987736940534078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8caacea2d01a214185df2accdd67c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IniciadorBatalha

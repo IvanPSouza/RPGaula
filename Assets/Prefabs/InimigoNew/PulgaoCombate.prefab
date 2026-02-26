@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6166780247052217039}
   m_Layer: 0
   m_Name: PulgaoCombate
-  m_TagString: Untagged
+  m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

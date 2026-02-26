@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControladorInimigo
   estadoAtual: 0
-  velocidade: 2
+  velocidade: 3
   pontosDePatrulha: []
   indicePontoAtual: 0
   tempoDeEspera: 2

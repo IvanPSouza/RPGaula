@@ -4,17 +4,34 @@ using UnityEngine.SceneManagement;
 
 public class GatilhoGuardiao : MonoBehaviour
 {
+
+    [Header("Identificação")]
+    [Tooltip("Dê um nome único. ex. Marmota_001")]
+    public string idUnico;
+
     [Header("Formação Inimiga")]
     [Tooltip("Arraste os PREFABS dos inimigos da aba PROJECT para cá")]
-    public List<GameObject> inimigosDesteGrupo;
+    public List<GameObject> inimigos;
 
-    private void OnTriggerEnter2D(Collider2D colision)
+    private void Start()
     {
-        if (colision.CompareTag("Player"))
+        //Verifica a lista de inimigos derrotados
+        if(DadosGlobais.inimigosDerrotados.Contains(idUnico))
         {
-            // Passa a lista inteira do grupo para a Memória Global
-            DadosGlobais.prefabsInimigos = new List<GameObject>(inimigosDesteGrupo);
-            SceneManager.LoadScene("CenaBatalha");
+            //Desliga o inimigo caso ele tenha sido derrotado
+            gameObject.SetActive(false);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            IniciadorBatalha iniciador = GetComponent<IniciadorBatalha>();
+
+            if (iniciador != null)
+            {
+                iniciador.DispararBatalha(collision.gameObject, idUnico, inimigos);
+            }
         }
     }
 }
