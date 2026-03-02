@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1430018274403554471, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -88,4 +92,5 @@ MonoBehaviour:
   raioPerseguicao: 8
   distanciaAtaque: 1
   prefabDaArena: {fileID: 6947540238336064364, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+  idUnico: 
   prefabInimigo: {fileID: 6947540238336064364, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
