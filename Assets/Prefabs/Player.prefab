@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 564276316170149012}
   - component: {fileID: 4465155262924535178}
   - component: {fileID: 4886812242148560197}
-  - component: {fileID: 5179765616907877745}
   - component: {fileID: 5153519427349145229}
+  - component: {fileID: 5179765616907877745}
   - component: {fileID: 7244895134584345981}
   m_Layer: 0
   m_Name: Player
@@ -160,19 +160,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.004050523, y: -0.48436922}
   m_Size: {x: 0.54950076, y: 0.5495008}
   m_Direction: 0
---- !u!114 &5179765616907877745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7278878071074570638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2efc6611b7a71c64b9e24c5a80b62978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovimentacaoEploracao
-  velocidade: 5
 --- !u!95 &5153519427349145229
 Animator:
   serializedVersion: 7
@@ -195,6 +182,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5179765616907877745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278878071074570638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2efc6611b7a71c64b9e24c5a80b62978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MovimentacaoEploracao
+  velocidade: 5
 --- !u!114 &7244895134584345981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,3 +211,4 @@ MonoBehaviour:
   hpMaximo: 100
   hpAtual: 0
   danoBase: 50
+  minhaBarraDeVida: {fileID: 0}
