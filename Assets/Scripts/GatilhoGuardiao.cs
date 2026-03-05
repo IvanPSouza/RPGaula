@@ -28,9 +28,18 @@ public class GatilhoGuardiao : MonoBehaviour
         {
             IniciadorBatalha iniciador = GetComponent<IniciadorBatalha>();
 
+            //Extraor de niveis dos inimigos
+            List<int> niveisExtraidos = new List<int>();
+            AtributosCombate[] inimigosCena = GetComponentsInChildren<AtributosCombate>();
+
+            foreach(AtributosCombate inimigo in inimigosCena)
+            {
+                niveisExtraidos.Add(inimigo.nivel);
+            }
+
             if (iniciador != null)
             {
-                iniciador.DispararBatalha(collision.gameObject, idUnico, inimigos);
+                iniciador.DispararBatalha(collision.gameObject, idUnico, inimigos, niveisExtraidos);
             }
         }
     }

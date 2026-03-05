@@ -3,33 +3,35 @@ using UnityEngine.UI;
 
 public class AtributosCombate : MonoBehaviour
 {
+    [Header("Evolução")]
+    public int nivel = 1;
+
+    [Header("Status Base")]
+    public int hpBase = 100;
+    public int danoBase = 10;
+
     public string nomePersonagem;
+
+    [Header("Status calculados")]
     public int hpMaximo = 100;
     public int hpAtual;
-    public int danoBase = 10;
+    public int danoAtual = 10;
 
     [Header("UI")]
     public Slider minhaBarraDeVida;
 
     void Start()
     {
-        if(gameObject.CompareTag("Player"))
+        CalcularStatus();
+        if(gameObject.CompareTag("Player") && DadosGlobais.hpAtualJogador != -1)
         {
-            if(DadosGlobais.hpAtualJogador != -1)
-            {
-                hpAtual = DadosGlobais.hpAtualJogador;
-            }
-            else
-            {
-                hpAtual = hpMaximo;
-            }
+            hpAtual = DadosGlobais.hpAtualJogador;
         }
         else
         {
             hpAtual = hpMaximo;
         }
 
-            // hpAtual = hpMaximo;
             AtualizarBarra();
     }
 
@@ -56,6 +58,18 @@ public class AtributosCombate : MonoBehaviour
         if (hpAtual >= hpMaximo) hpAtual = hpMaximo;//Evita valores superiores ao HP Maximo
 
         AtualizarBarra();
+    }
+
+    public void CalcularStatus()
+    {
+        //Ganha +20 de HP e +5 de dano por nivel
+        hpMaximo = hpBase + ((nivel - 1) * 20);
+        danoAtual = danoBase + ((nivel - 1) * 5);
+
+        if(hpAtual > hpMaximo)
+        {
+            hpAtual = hpMaximo;
+        }
     }
 
     public void AtualizarBarra()

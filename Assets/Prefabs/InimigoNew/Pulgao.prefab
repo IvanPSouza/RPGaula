@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pulgao
       objectReference: {fileID: 0}
+    - target: {fileID: 7113394783722783551, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113394783722783551, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6166780247052217039, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
     m_RemovedGameObjects: []
@@ -64,6 +72,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6947540238336064364, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2742439247852581148}
+    - targetCorrespondingSourceObject: {fileID: 6947540238336064364, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 845484716655455668}
   m_SourcePrefab: {fileID: 100100000, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
 --- !u!1 &2619878357069324237 stripped
 GameObject:
@@ -94,3 +105,23 @@ MonoBehaviour:
   prefabDaArena: {fileID: 6947540238336064364, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
   idUnico: 
   prefabInimigo: {fileID: 6947540238336064364, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+--- !u!114 &845484716655455668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2619878357069324237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0193c0bedbabf464bbc9d0be4dcb15c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AtributosCombate
+  nivel: 1
+  hpBase: 100
+  danoBase: 10
+  nomePersonagem: 
+  hpMaximo: 100
+  hpAtual: 0
+  danoAtual: 10
+  minhaBarraDeVida: {fileID: 0}

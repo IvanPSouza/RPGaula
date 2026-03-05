@@ -147,13 +147,19 @@ public class ControladorInimigo : MonoBehaviour
         //Busca o IniciadorBatalha no objeto pai (container)
         IniciadorBatalha iniciador = GetComponentInParent<IniciadorBatalha>();
 
-        //Empacotando o inimigo em uma lista
-        List<GameObject> lista = new List<GameObject>();
-        lista.Add(prefabInimigo);
+        //Empacotando o prefab do inimigo em uma lista
+        List<GameObject> listaPrefab = new List<GameObject>();
+        listaPrefab.Add(prefabInimigo);
+
+        //Empacotando o nivel do inimigo em uma lista
+        List<int> ListaNivel = new List<int>();
+        int Nivel = GetComponent<AtributosCombate>().nivel;
+        ListaNivel.Add(Nivel);
+
 
         if(iniciador != null)
         {
-            iniciador.DispararBatalha(jogador.gameObject, idUnico, lista);
+            iniciador.DispararBatalha(jogador.gameObject, idUnico, listaPrefab, ListaNivel);
         }
     }
 

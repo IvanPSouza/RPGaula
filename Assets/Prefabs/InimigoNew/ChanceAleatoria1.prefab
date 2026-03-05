@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: -5.35058, y: 28.95886, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5476228807412625351}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1917294367037918614
@@ -108,3 +109,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8caacea2d01a214185df2accdd67c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IniciadorBatalha
+--- !u!1001 &6694282393496249186
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3667544927961570139}
+    m_Modifications:
+    - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.4174201
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 29.527048
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947540238336064364, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_Name
+      value: PulgaoCombate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947540238336064364, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113394783722783551, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113394783722783551, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+--- !u!4 &5476228807412625351 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1664545467065289893, guid: fdee99cabb0269548b05e55ec2b2cb04, type: 3}
+  m_PrefabInstance: {fileID: 6694282393496249186}
+  m_PrefabAsset: {fileID: 0}

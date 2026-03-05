@@ -12,6 +12,10 @@ public class GerenciadorBatalha : MonoBehaviour
         // 1. Cria o Herói e desliga o script de exploração
         GameObject heroi = Instantiate(prefabHeroi, pontoHeroi.position, Quaternion.identity);
 
+        AtributosCombate atributosJogador = heroi.GetComponent<AtributosCombate>();
+        atributosJogador.nivel = DadosGlobais.nivelAtualJogador;
+        atributosJogador.CalcularStatus();
+
         if (heroi.GetComponent<MovimentacaoEploracao>() != null)
             heroi.GetComponent<MovimentacaoEploracao>().enabled = false;
 
@@ -24,7 +28,18 @@ public class GerenciadorBatalha : MonoBehaviour
 
             // Instancia diretamente a versão "Arena" do monstro!
             // Zero IFs e zero necessidade de desativar IA!
-            Instantiate(grupoPrefabs[i], pontosInimigos[i].position, Quaternion.identity);
+            GameObject inimigo = Instantiate(grupoPrefabs[i], pontosInimigos[i].position, Quaternion.identity);
+
+
+            //Pega os dados da memoria global e atribui aos inimigos
+            AtributosCombate atributos = inimigo.GetComponent<AtributosCombate>();
+
+            if(i < DadosGlobais.niveisInimigosArena.Count)
+            {
+                atributos.nivel = DadosGlobais.niveisInimigosArena[i];
+                atributos.CalcularStatus();
+                atributos.hpAtual = atributos.hpMaximo;
+            }
         }
     }
 }

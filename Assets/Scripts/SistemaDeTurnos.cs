@@ -60,12 +60,27 @@ public class SistemaDeTurnos : MonoBehaviour
 
         //Define o alvo do ataque. Sempre o primeiro elemento da lista
         AtributosCombate alvo = inimigosVivos[0];
-        alvo.ReceberDano(atributosHeroi.danoBase);
+        alvo.ReceberDano(atributosHeroi.danoAtual);
 
         //Se a vida do inimigo chegou a zero, removemos ele de lista
         if(alvo.hpAtual <= 0)
         {
+            //1. Busca os scripts
+            RecompensaInimigo loot = alvo.GetComponent<RecompensaInimigo>();
+            ProgressoJogador progresso = atributosHeroi.GetComponent<ProgressoJogador>();
+
+            //2. Transfere as recompensas
+            progresso.GanharXP(loot.xpDrop);
+            DadosGlobais.moedasAtualJogador += loot.moedasDrop;
+
+            Debug.Log($"Você encontrou {loot.moedasDrop} moedas!");
+
+            //3. Graca os dados na memoria global
+            DadosGlobais.xpAtualJogador = progresso.xpAtual;
+            DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
+
             inimigosVivos.RemoveAt(0);
+
         }
 
         VerificarFimDeTurnoJogador();
@@ -132,7 +147,13 @@ public class SistemaDeTurnos : MonoBehaviour
 
     IEnumerator FinalizarBatalha(bool jogadorVenceu)
     {
+        ProgressoJogador progresso = atributosHeroi.GetComponent<ProgressoJogador>();
+
+        //Salva a vida e o XP
         DadosGlobais.hpAtualJogador = atributosHeroi.hpAtual;
+        DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
+        DadosGlobais.xpAtualJogador = progresso.xpAtual;
+
         yield return new WaitForSeconds(2f);
         if (jogadorVenceu)
         {

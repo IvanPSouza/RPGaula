@@ -15,6 +15,10 @@ public class EncontroAleatorio : MonoBehaviour
     [Header("Chance de encontro")]
     public int chanceMax = 1000;
 
+    private void Start()
+    {
+        
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -27,7 +31,10 @@ public class EncontroAleatorio : MonoBehaviour
                 Debug.Log("foi dessa vez");
                 if (iniciador != null)
                 {
-                    iniciador.DispararBatalha(collision.gameObject, idUnico, inimigos);
+                    //Extraor de niveis dos inimigos
+                    List<int> niveisExtraidos = new List<int>();
+                    AtributosCombate[] inimigosCena = GetComponentsInChildren<AtributosCombate>();
+                    iniciador.DispararBatalha(collision.gameObject, idUnico, inimigos, niveisExtraidos);
                 }
             }
             else
