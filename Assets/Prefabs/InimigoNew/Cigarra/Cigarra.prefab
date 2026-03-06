@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5760358536361370625
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1173981664219146461, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173981664219146461, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114999386399234720, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114999386399234720, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114999386399234720, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114999386399234720, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114999386399234720, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114999386399234720, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114999386399234720, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114999386399234720, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114999386399234720, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114999386399234720, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092718489037236234, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      propertyPath: m_Name
+      value: Cigarra
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9092718489037236234, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8019864465556854396}
+  m_SourcePrefab: {fileID: 100100000, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+--- !u!1 &3593649146877545483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9092718489037236234, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+  m_PrefabInstance: {fileID: 5760358536361370625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8019864465556854396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3593649146877545483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e7d142c8683fa46ab8ddb80d55db24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControladorInimigo
+  estadoAtual: 0
+  velocidade: 3
+  pontosDePatrulha:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  indicePontoAtual: 0
+  tempoDeEspera: 2
+  cronometroEspera: 0
+  raioVisao: 5
+  raioPerseguicao: 8
+  distanciaAtaque: 1
+  prefabDaArena: {fileID: 9092718489037236234, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
+  idUnico: 
+  prefabInimigo: {fileID: 9092718489037236234, guid: fbbe4eda0f147d841b21dd19eaf43c81, type: 3}
