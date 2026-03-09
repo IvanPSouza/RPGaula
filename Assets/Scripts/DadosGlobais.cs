@@ -16,4 +16,11 @@ public static class DadosGlobais
     public static int nivelAtualJogador = 1;
     public static int xpAtualJogador = 0;
     public static int moedasAtualJogador = 0;
+    public static int pocoesAtualJogador = 0;
+
+    //Sistema de missões
+    public static Quest questDisponivel;
+    public static Quest QuestAtiva;
+    public static int progressoAtual = 0;
+    public static bool historiaConcluida = false;
 }

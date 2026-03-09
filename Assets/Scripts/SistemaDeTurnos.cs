@@ -81,6 +81,18 @@ public class SistemaDeTurnos : MonoBehaviour
 
             inimigosVivos.RemoveAt(0);
 
+            if (loot != null && progresso != null)
+            {
+                //Rastreador de missão
+                if (DadosGlobais.QuestAtiva != null)
+                {
+                    if (DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.CacarMonstros || DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.ColetarItens)
+                    {
+                        DadosGlobais.progressoAtual++;
+                        Debug.Log($"Quest atualizado no console: {DadosGlobais.progressoAtual} / {DadosGlobais.QuestAtiva.quantidade}");
+                    }
+                }
+            }
         }
 
         VerificarFimDeTurnoJogador();

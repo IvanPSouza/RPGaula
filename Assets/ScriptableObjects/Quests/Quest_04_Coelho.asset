@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c90552462e12534c833db8ac8db0b9e, type: 3}
+  m_Name: Quest_04_Coelho
+  m_EditorClassIdentifier: Assembly-CSharp::Quest
+  nomeQuest: A besta fera de Caerbannog
+  tipoMissao: 1
+  nomeNPCEmissor: Alho
+  nomeNPCDestino: Alho
+  falaInicio: Erro1
+  falaAndamento: Erro2
+  falaConclusao: Erro3
+  descricaoNoHud: Mate o monstro para escapar do subsolo
+  quantidade: 1
+  nomeObjetivo: Coelho
+  recompensaOuro: 100
+  recompensaXP: 5000
+  proximaQuest: {fileID: 11400000, guid: f6af1ae0cf314f84bbe6d8da29e6c3e5, type: 2}

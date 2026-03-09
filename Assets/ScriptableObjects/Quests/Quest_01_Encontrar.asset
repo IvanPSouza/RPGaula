@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c90552462e12534c833db8ac8db0b9e, type: 3}
+  m_Name: Quest_01_Encontrar
+  m_EditorClassIdentifier: Assembly-CSharp::Quest
+  nomeQuest: "A refei\xE7\xE3o mais importante do dia"
+  tipoMissao: 0
+  nomeNPCEmissor: Nabo
+  nomeNPCDestino: Nabo
+  falaInicio: "Ola Cenoura, ent\xE3o voce vai sair hoje n\xE3o \xE9 mesmo? eu posso
+    abrir o caminho pra voce mas preciso de 5 moedas e te darei nutrientes como agradecimento"
+  falaAndamento: Preciso de 5 moedas para abrir a passagem
+  falaConclusao: "Obrigado Cenoura, aqui est\xE3o seus nutrientes e abrirei o caminho
+    para voc\xE9"
+  descricaoNoHud: Encontre 5 moedas de ouro para trocar com o nabo pela abertura
+    do caminho e 5 nutrientes
+  quantidade: 0
+  nomeObjetivo: 
+  recompensaOuro: 0
+  recompensaXP: 50
+  proximaQuest: {fileID: 11400000, guid: ffebce8b3c507ec4c928aca2e658a0e5, type: 2}
