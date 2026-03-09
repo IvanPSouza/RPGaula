@@ -13,33 +13,13 @@ MonoBehaviour:
   m_Name: Quest_02_Chegue
   m_EditorClassIdentifier: Assembly-CSharp::Quest
   nomeQuest: "Caminho dos pulg\xF5es"
-  tipoMissao: 3
+  tipoMissao: 0
   nomeNPCEmissor: Nabo
   nomeNPCDestino: Alho
   falaInicio: Comece sua jornada Cenoura, estou torcendo por voce
   falaAndamento: Comece sua jornada Cenoura, estou torcendo por voce
-  falaConclusao: "Cenoura: Eu n\xE3o esperava ver ningu\xE9m aqui\u2026 Pelo menos
-    n\xE3o vivo.\r\nAlho: Hehehe\u2026 Eu n\xE3o tinha d\xFAvidas de que algu\xE9m
-    iria aparecer.\r\nCenoura: O que voc\xEA quer dizer com isso?\r\nAlho: Voc\xEA
-    n\xE3o \xE9 a \xFAnica que conseguiu chegar aqui, minha cara, hehehe\u2026\r\n
-    Ah, mas aqui n\xE3o \xE9 o fim da jornada.\r\nCenoura: Quer dizer que outros
-    conseguiram chegar \xE0 superf\xEDcie?!\r\nAlho: HEHEHE!! Nem chegaram perto,
-    eu mesmo estou preso aqui h\xE1 anos!\r\nCenoura: Ma-mas como? Aqui \xE9 o fim
-    da estrada deveria ter uma sa\xEDda aqui!\r\nAlho: A sa\xEDda est\xE1 bem aqui,
-    atr\xE1s dessas ra\xEDzes de mycelium.\r\nCenoura: Os cogumelos est\xE3o\u2026
-    nos impedindo de sair?\r\nAlho:  N\xE3o, eles est\xE3o impedindo algo de entrar,
-    eu ou\xE7o, \xE0s noites, seus grunhidos, suas patas cavando o solo procurando
-    por comida.\r\nCenoura: \u2026Eu ainda vou sair daqui.\r\nAlho: \xC9 o que todos
-    dizem.\r\nCenoura: \u2026Como voc\xEA est\xE1 vivo?\r\nAlho:  Aqui \xE9 uma regi\xE3o
-    segura, os predadores n\xE3o se atrevem a explorar esta \xE1rea gra\xE7as \xE0
-    grande concentra\xE7\xE3o de mycelium aqui. Chamo esse lugar de Terra de Ningu\xE9m.\r\nCenoura:
-    Ent\xE3o voc\xEA decidiu ficar aqui? Por que n\xE3o tentou voltar?\r\nAlho: Eu
-    n\xE3o poderia voltar com a vergonha de ter falhado em chegar \xE0 superf\xEDcie.\r\nCenoura:
-    Mas voc\xEA sabe como sair daqui?\r\nAlho: Sim, eu sei.\r\nCenoura: Ent\xE3o
-    me diga como.\r\nAlho: Existe um instrumento musical capaz de abrir o caminho
-    bloqueado pelo mycelium, h\xE1 muito tempo ele foi quebrado em dois, cada parte
-    foi escondida no final dos t\xFAneis \xE0 esquerda e \xE0 direita de n\xF3s.\r\nCenoura:
-    Isso \xE9 tudo que eu precisava saber, obrigada.\r\n"
+  falaConclusao: "Ola Cenourinha, pela sua cara imagino que n\xE3o esperava ver uma
+    alma viva aqui, como esta?"
   descricaoNoHud: "Chegue ate o fim do caminho dos pulg\xF5es"
   quantidade: 0
   nomeObjetivo: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Quest_01_Encontrar
   m_EditorClassIdentifier: Assembly-CSharp::Quest
   nomeQuest: "A refei\xE7\xE3o mais importante do dia"
-  tipoMissao: 0
+  tipoMissao: 2
   nomeNPCEmissor: Nabo
   nomeNPCDestino: Nabo
   falaInicio: "Ola Cenoura, ent\xE3o voce vai sair hoje n\xE3o \xE9 mesmo? eu posso
@@ -23,8 +23,8 @@ MonoBehaviour:
     para voc\xE9"
   descricaoNoHud: Encontre 5 moedas de ouro para trocar com o nabo pela abertura
     do caminho e 5 nutrientes
-  quantidade: 0
-  nomeObjetivo: 
+  quantidade: 5
+  nomeObjetivo: Moedas
   recompensaOuro: 0
   recompensaXP: 50
   proximaQuest: {fileID: 11400000, guid: ffebce8b3c507ec4c928aca2e658a0e5, type: 2}
