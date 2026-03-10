@@ -79,6 +79,7 @@ public class NPCQuest : MonoBehaviour
                 {
                     Debug.Log($"{nome} diz: {quest.falaConclusao} (Recebeu {quest.recompensaOuro}) Ouro");
                     //Entregar recompensa
+                    EntregarRecompensa(quest);
                 }
                 else
                 {

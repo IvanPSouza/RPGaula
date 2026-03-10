@@ -443,9 +443,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0193c0bedbabf464bbc9d0be4dcb15c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AtributosCombate
-  nivel: 1
-  hpBase: 100
-  danoBase: 10
+  nivel: 2
+  hpBase: 200
+  danoBase: 5
   nomePersonagem: Caramujo
   hpMaximo: 100
   hpAtual: 0
