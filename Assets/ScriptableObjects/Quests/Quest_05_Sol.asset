@@ -16,9 +16,9 @@ MonoBehaviour:
   tipoMissao: 3
   nomeNPCEmissor: Alho
   nomeNPCDestino: Alho
-  falaInicio: Erro1
-  falaAndamento: Erro2
-  falaConclusao: Erro3
+  falaInicio: Seu caminho esta livre, saia do subsolo agora
+  falaAndamento: "Va la, n\xE3o tem nada no seu caminho"
+  falaConclusao: thau Cenourinha
   descricaoNoHud: Saia do subsolo
   quantidade: 0
   nomeObjetivo: 

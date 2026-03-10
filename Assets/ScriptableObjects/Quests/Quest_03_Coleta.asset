@@ -16,16 +16,13 @@ MonoBehaviour:
   tipoMissao: 2
   nomeNPCEmissor: Alho
   nomeNPCDestino: Alho
-  falaInicio: "Cenoura: Mas voc\xEA sabe como sair daqui?\r\nAlho: Sim, eu sei.\r\nCenoura:
-    Ent\xE3o me diga como.\r\nAlho: Existe um instrumento musical capaz de abrir
-    o caminho bloqueado pelo mycelium, h\xE1 muito tempo ele foi quebrado em dois,
-    cada parte foi escondida no final dos t\xFAneis \xE0 esquerda e \xE0 direita
-    de n\xF3s.\r\nCenoura: Isso \xE9 tudo que eu precisava saber, obrigada\r\n"
-  falaAndamento: 'Alho: Va la cenourinha, eu acredito em ti'
-  falaConclusao: "Cenoura: Eu consegui!!\r\nAlho: Eu n\xE3o lembro de ningu\xE9m
-    ter chegado t\xE3o longe\u2026 parab\xE9ns Cenourinha.\r\nCenoura: Agora \xE9
-    s\xF3 tocar isso para abrir a passagem?\r\nAlho: Em teoria sim, mas ainda ter\xE1
-    que lidar com a fera do outro lado.\r\nCenoura: N\xE3o tem problema, eu consigo.\r\n"
+  falaInicio: "Para passar por aqui preciso que colete 2 peda\xE7os de isntrumentos
+    musicais, um aa esquerda e ouro a direita daqui, volte quando tiver eles coletados"
+  falaAndamento: Va la cenourinha, eu acredito em ti
+  falaConclusao: 'Agora a passagem se abriu, boa sorte em sua luta contra o monstro
+    atras do mycelium
+
+'
   descricaoNoHud: Encontre as duas metades do instrumento musical e concerte-o
   quantidade: 2
   nomeObjetivo: "Peda\xE7o de instrumento"
