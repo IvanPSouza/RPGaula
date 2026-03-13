@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class NPCQuest : MonoBehaviour
 {
@@ -11,12 +12,16 @@ public class NPCQuest : MonoBehaviour
     [Header("Visuais")]
     public SpriteRenderer indicadorVisual; //AZUL [inicio] | LARANJA [destino]
 
+    [Header("Interface de Diálogo (NOVO)")]
+    public GameObject painelDialogo;
+    public TextMeshProUGUI textoDialogo;
+
     private bool jogadorPerto = false;
     private GameObject jogadorRef;
 
     private void Start()
     {
-        if(questInicial != null && DadosGlobais.questDisponivel == null && DadosGlobais.QuestAtiva == null && DadosGlobais.historiaConcluida == false)
+        if (questInicial != null && DadosGlobais.questDisponivel == null && DadosGlobais.QuestAtiva == null && DadosGlobais.historiaConcluida == false)
         {
             DadosGlobais.questDisponivel = questInicial;
         }
@@ -25,7 +30,7 @@ public class NPCQuest : MonoBehaviour
     private void Update()
     {
         AtualizarIconeVisual();
-        if(jogadorPerto && Input.GetKeyDown(KeyCode.E))
+        if (jogadorPerto && Input.GetKeyDown(KeyCode.E))
         {
             Interagir();
         }
@@ -40,12 +45,12 @@ public class NPCQuest : MonoBehaviour
         if (DadosGlobais.historiaConcluida) return;
 
         //AZU (nova quest)
-        if(DadosGlobais.QuestAtiva == null && DadosGlobais.questDisponivel != null && DadosGlobais.questDisponivel.nomeNPCEmissor == nome)
+        if (DadosGlobais.QuestAtiva == null && DadosGlobais.questDisponivel != null && DadosGlobais.questDisponivel.nomeNPCEmissor == nome)
         {
             indicadorVisual.color = Color.blue;
             indicadorVisual.gameObject.SetActive(true);
         }
-        else if(DadosGlobais.QuestAtiva != null && DadosGlobais.QuestAtiva.nomeNPCDestino == nome)//LARANJA (entrega)
+        else if (DadosGlobais.QuestAtiva != null && DadosGlobais.QuestAtiva.nomeNPCDestino == nome)//LARANJA (entrega)
         {
             indicadorVisual.color = Color.orange;
             indicadorVisual.gameObject.SetActive(true);
@@ -54,9 +59,14 @@ public class NPCQuest : MonoBehaviour
 
     public void Interagir()
     {
-        if(DadosGlobais.historiaConcluida)
+        // 1. Liga o painel visual
+        if (painelDialogo != null) painelDialogo.SetActive(true);
+        if (textoDialogo == null) return;
+
+        // 2. Os antigos Debug.Logs viram textoDialogo.text!
+        if (DadosGlobais.historiaConcluida)
         {
-            Debug.Log($"{nome} diz: Parabens por chegar na superfice Cenoura");
+            textoDialogo.text = "Parabens por chegar na superficie cenourinha!";
             return;
         }
 
@@ -65,7 +75,7 @@ public class NPCQuest : MonoBehaviour
         {
             Quest quest = DadosGlobais.QuestAtiva;
 
-            if(quest.nomeNPCDestino == nome)
+            if (quest.nomeNPCDestino == nome)
             {
                 bool terminouCaca = (quest.tipoMissao == TipoQuest.CacarMonstros && DadosGlobais.progressoAtual >= quest.quantidade);
 
@@ -75,43 +85,43 @@ public class NPCQuest : MonoBehaviour
 
                 bool terminouChegar = (quest.tipoMissao == TipoQuest.ChegueLocal);
 
-                if(terminouCaca || terminouChegar || terminouColeta || terminouEntrega)
+                if (terminouCaca || terminouChegar || terminouColeta || terminouEntrega)
                 {
-                    Debug.Log($"{nome} diz: {quest.falaConclusao} (Recebeu {quest.recompensaOuro}) Ouro");
-                    //Entregar recompensa
+                    textoDialogo.text = quest.falaConclusao + "\n\n(Recebeu " + quest.recompensaOuro + " Ouro!)";
                     EntregarRecompensa(quest);
                 }
                 else
                 {
-                    Debug.Log($"{nome} diz: {quest.falaAndamento} Progresso: {DadosGlobais.progressoAtual} / {quest.quantidade} {quest.nomeObjetivo}");
+                    // INCLUINDO O NOME DO ITEM AQUI!
+                    textoDialogo.text = quest.falaAndamento + "\n(Progresso: " + DadosGlobais.progressoAtual + "/" + quest.quantidade + " " + quest.nomeObjetivo + ")";
                 }
 
             }
             else
             {
-                Debug.Log($"{nome} diz: O {quest.nomeNPCDestino} está a sua espera. Não perca tempo aqui!");
+                textoDialogo.text = "O " + quest.nomeNPCDestino + " está à sua espera. Não perca tempo aqui!";
             }
             return;
         }
 
-        //Cenario 2: Nova missao no mundo
         if (DadosGlobais.questDisponivel != null)
         {
             if (DadosGlobais.questDisponivel.nomeNPCEmissor == nome)
             {
-                Debug.Log($"{nome} diz: {DadosGlobais.questDisponivel.falaInicio}");
+                textoDialogo.text = DadosGlobais.questDisponivel.falaInicio;
                 DadosGlobais.QuestAtiva = DadosGlobais.questDisponivel;
                 DadosGlobais.questDisponivel = null;
                 DadosGlobais.progressoAtual = 0;
             }
-            else
-            {
-                Debug.Log($"{nome} diz: Ouvi dizer que o {DadosGlobais.questDisponivel.nomeNPCEmissor} esta a sua procura.");
-            }
+            else { textoDialogo.text = "Ouvi dizer que o " + DadosGlobais.questDisponivel.nomeNPCEmissor + " está à sua procura."; }
             return;
         }
-        //Cenario 3: NPC sem quest
-        Debug.Log($"{nome} diz: Olá cenoura, como vai hoje?");
+
+        textoDialogo.text = "Olá Cenoura! O dia está lindo hoje.";
+    }
+    public void FecharDialogo()
+    {
+        if (painelDialogo != null) painelDialogo.SetActive(false);
     }
 
     void EntregarRecompensa(Quest questConcluida)
@@ -125,7 +135,7 @@ public class NPCQuest : MonoBehaviour
         DadosGlobais.questDisponivel = questConcluida.proximaQuest;
 
         //se não tem quests disponiveis a historia foi concluida!
-        if(DadosGlobais.questDisponivel == null)
+        if (DadosGlobais.questDisponivel == null)
         {
             DadosGlobais.historiaConcluida = true;
         }
@@ -133,7 +143,7 @@ public class NPCQuest : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             jogadorPerto = true;
             jogadorRef = collision.gameObject;
@@ -141,9 +151,10 @@ public class NPCQuest : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            jogadorPerto = false;
+            jogadorPerto = false; 
+            FecharDialogo();
         }
     }
 }

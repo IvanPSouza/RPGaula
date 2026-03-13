@@ -8,118 +8,183 @@ public enum EstadoBatalha
 {
     Preparacao, TurnoJogador, TurnoInimigo, Vitoria, Derrota
 }
+
 public class SistemaDeTurnos : MonoBehaviour
 {
     public EstadoBatalha estadoAtual;
 
+    [Header("UI")]
     public Slider slideHeroi;
+    public Button btnPocao;
 
-    AtributosCombate atributosHeroi;
+    [Header("Referências")]
+    public SistemaInventario inventario; // agora ligado no inspector
+    public DadosItem pocaoDeVida;
 
+    private AtributosCombate atributosHeroi;
     private List<AtributosCombate> inimigosVivos = new List<AtributosCombate>();
 
     private void Start()
     {
         estadoAtual = EstadoBatalha.Preparacao;
-
         StartCoroutine(ConfigurarBatalha());
     }
 
     IEnumerator ConfigurarBatalha()
     {
-        Debug.Log("Preparando a batalha...");
+        // ===== HEROI =====
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        //eNCONTRA OS PERSONAGENS DENTRO DA ARENA ULTILIZANDO AS TAGS
-        atributosHeroi = GameObject.FindGameObjectWithTag("Player").GetComponent<AtributosCombate>();
+        if (player == null)
+        {
+            Debug.LogError("Player com tag 'Player' não encontrado!");
+            yield break;
+        }
+
+        atributosHeroi = player.GetComponent<AtributosCombate>();
+
+        if (atributosHeroi == null)
+        {
+            Debug.LogError("AtributosCombate não encontrado no Player!");
+            yield break;
+        }
+
         atributosHeroi.minhaBarraDeVida = slideHeroi;
         atributosHeroi.AtualizarBarra();
 
-        yield return new WaitForSeconds(1F);
+        // ===== INVENTÁRIO =====
+        if (inventario != null && pocaoDeVida != null)
+        {
+            if (!inventario.TemItem(pocaoDeVida, 1))
+            {
+                if (btnPocao != null)
+                    btnPocao.interactable = false;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Inventário ou Poção não configurados no Inspector.");
+        }
 
+        Debug.Log("Preparando a batalha...");
+        yield return new WaitForSeconds(1f);
+
+        // ===== INIMIGOS =====
         GameObject[] objsInimigos = GameObject.FindGameObjectsWithTag("Inimigo");
+
         foreach (GameObject obj in objsInimigos)
         {
-            inimigosVivos.Add(obj.GetComponent<AtributosCombate>());
+            AtributosCombate inimigo = obj.GetComponent<AtributosCombate>();
+
+            if (inimigo != null)
+                inimigosVivos.Add(inimigo);
+        }
+
+        if (inimigosVivos.Count == 0)
+        {
+            Debug.LogWarning("Nenhum inimigo encontrado na cena!");
         }
 
         IniciarTurnoJogador();
     }
 
-    private void IniciarTurnoJogador()
+    void IniciarTurnoJogador()
     {
-        Debug.Log("Sua vez. Precione ESPAÇO para ATACAR!");
+        Debug.Log("Sua vez. Pressione o botão de ataque!");
         estadoAtual = EstadoBatalha.TurnoJogador;
     }
 
     public void BotaoAtacarFraco()
     {
-        if(estadoAtual != EstadoBatalha.TurnoJogador)
-        {
+        if (estadoAtual != EstadoBatalha.TurnoJogador)
             return;
-        }
 
-        //Define o alvo do ataque. Sempre o primeiro elemento da lista
+        if (inimigosVivos.Count == 0)
+            return;
+
         AtributosCombate alvo = inimigosVivos[0];
         alvo.ReceberDano(atributosHeroi.danoAtual);
 
-        //Se a vida do inimigo chegou a zero, removemos ele de lista
-        if(alvo.hpAtual <= 0)
+        if (alvo.hpAtual <= 0)
         {
-            //1. Busca os scripts
             RecompensaInimigo loot = alvo.GetComponent<RecompensaInimigo>();
             ProgressoJogador progresso = atributosHeroi.GetComponent<ProgressoJogador>();
 
-            //2. Transfere as recompensas
-            progresso.GanharXP(loot.xpDrop);
-            DadosGlobais.moedasAtualJogador += loot.moedasDrop;
-
-            Debug.Log($"Você encontrou {loot.moedasDrop} moedas!");
-
-            //3. Graca os dados na memoria global
-            DadosGlobais.xpAtualJogador = progresso.xpAtual;
-            DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
-
-            inimigosVivos.RemoveAt(0);
-
             if (loot != null && progresso != null)
             {
-                //Rastreador de missão
-                if (DadosGlobais.QuestAtiva != null)
+                progresso.GanharXP(loot.xpDrop);
+                DadosGlobais.moedasAtualJogador += loot.moedasDrop;
+
+                Debug.Log($"Você encontrou {loot.moedasDrop} moedas!");
+
+                DadosGlobais.xpAtualJogador = progresso.xpAtual;
+                DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
+
+               /* if (DadosGlobais.QuestAtiva != null)
                 {
-                    if (DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.CacarMonstros || DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.ColetarItens)
+                    if (DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.CacarMonstros ||
+                        DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.ColetarItens)
                     {
                         DadosGlobais.progressoAtual++;
-                        Debug.Log($"Quest atualizado no console: {DadosGlobais.progressoAtual} / {DadosGlobais.QuestAtiva.quantidade}");
+                        Debug.Log($"Quest: {DadosGlobais.progressoAtual}/{DadosGlobais.QuestAtiva.quantidade}");
                     }
                 }
+                 */
+            }
+
+            inimigosVivos.RemoveAt(0);
+        }
+
+        VerificarFimDeTurnoJogador();
+    }
+
+    public void BotaoPocao()
+    {
+        if (estadoAtual != EstadoBatalha.TurnoJogador)
+            return;
+
+        bool consumiu = false;
+
+        foreach (SlotInventario slot in DadosGlobais.inventarioAtual)
+        {
+            if (slot.dadosDoItem == pocaoDeVida && slot.quantidade > 0)
+            {
+                slot.quantidade--;
+                consumiu = true;
+
+                if (slot.quantidade <= 0)
+                {
+                    DadosGlobais.inventarioAtual.Remove(slot);
+
+                    if (btnPocao != null)
+                        btnPocao.interactable = false;
+                }
+
+                break;
             }
         }
 
-        VerificarFimDeTurnoJogador();
-    }
-    public void BotaoPocao()
-    {
-        if(estadoAtual != EstadoBatalha.TurnoJogador)
+        if (consumiu)
         {
-            return;
+            atributosHeroi.ReceberCura(50);
+            Debug.Log("Você bebeu a poção!");
+            VerificarFimDeTurnoJogador();
         }
-
-        //CHAMA A FUNÇÃO DE CURA
-        atributosHeroi.ReceberCura(30);
-
-        VerificarFimDeTurnoJogador();
+        else
+        {
+            Debug.LogWarning("Você não tem mais poções!");
+        }
     }
+
     void VerificarFimDeTurnoJogador()
     {
-        //Se a fila inimigos ficou VAZIA
-        if(inimigosVivos.Count <= 0)
+        if (inimigosVivos.Count <= 0)
         {
             estadoAtual = EstadoBatalha.Vitoria;
             StartCoroutine(FinalizarBatalha(true));
         }
         else
         {
-            //Ainda há inimigos vivos
             estadoAtual = EstadoBatalha.TurnoInimigo;
             StartCoroutine(TurnoDoInimigo());
         }
@@ -127,28 +192,21 @@ public class SistemaDeTurnos : MonoBehaviour
 
     IEnumerator TurnoDoInimigo()
     {
-        Debug.Log("Inimigo pensando...");
+        Debug.Log("Inimigos pensando...");
 
-        //Inimigos atacam o jogador
-        Debug.Log("Inimigo ataca o jogador");
-
-        foreach(AtributosCombate inimigo in inimigosVivos)
+        foreach (AtributosCombate inimigo in inimigosVivos)
         {
             yield return new WaitForSeconds(2f);
+
             atributosHeroi.ReceberDano(inimigo.danoBase);
 
-            //Verifica se o heroi morreu
-            if(atributosHeroi.hpAtual <= 0)
-            {
+            if (atributosHeroi.hpAtual <= 0)
                 break;
-            }
         }
 
-        //Verifica se o combate encerrou
         if (atributosHeroi.hpAtual <= 0)
         {
             estadoAtual = EstadoBatalha.Derrota;
-            //Finalizar a batalha
             StartCoroutine(FinalizarBatalha(false));
         }
         else
@@ -161,17 +219,20 @@ public class SistemaDeTurnos : MonoBehaviour
     {
         ProgressoJogador progresso = atributosHeroi.GetComponent<ProgressoJogador>();
 
-        //Salva a vida e o XP
         DadosGlobais.hpAtualJogador = atributosHeroi.hpAtual;
         DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
-        DadosGlobais.xpAtualJogador = progresso.xpAtual;
+
+        if (progresso != null)
+            DadosGlobais.xpAtualJogador = progresso.xpAtual;
 
         yield return new WaitForSeconds(2f);
+
         if (jogadorVenceu)
         {
-            Debug.Log("Vitória! Voltando para o mundo de exploração");
-            //ADICIONA O ID DO INIMIGO AO CEMITERIO(LISTA DE DERROTADOS)
+            Debug.Log("Vitória!");
+
             DadosGlobais.inimigosDerrotados.Add(DadosGlobais.idInimigoEmCombate);
+
             SceneManager.LoadScene("Mundo");
         }
         else

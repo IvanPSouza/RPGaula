@@ -184,6 +184,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SistemaDeTurnos
   estadoAtual: 0
   slideHeroi: {fileID: 1376374145}
+  btnPocao: {fileID: 646722100}
+  inventario: {fileID: 0}
+  pocaoDeVida: {fileID: 11400000, guid: 702f101cb38700d419932536a9deb420, type: 2}
 --- !u!1 &231450913
 GameObject:
   m_ObjectHideFlags: 0
