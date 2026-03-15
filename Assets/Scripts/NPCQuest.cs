@@ -130,6 +130,9 @@ public class NPCQuest : MonoBehaviour
         DadosGlobais.moedasAtualJogador += questConcluida.recompensaOuro;
         DadosGlobais.xpAtualJogador += questConcluida.recompensaXP;
 
+        // Conta missão concluída
+        DadosGlobais.missoesConcluidas++;
+
         //Proxima quest da questline
         DadosGlobais.QuestAtiva = null;
         DadosGlobais.questDisponivel = questConcluida.proximaQuest;

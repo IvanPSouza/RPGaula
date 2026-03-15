@@ -25,4 +25,5 @@ public static class DadosGlobais
     public static Quest QuestAtiva;
     public static int progressoAtual = 0;
     public static bool historiaConcluida = false;
+    public static int missoesConcluidas = 0;
 }
