@@ -17,10 +17,13 @@ public static class DadosGlobais
     public static int xpAtualJogador = 0;
     public static int moedasAtualJogador = 0;
     public static int pocoesAtualJogador = 0;
+    public static List<SlotInventario> inventarioAtual = new List<SlotInventario>();
+
 
     //Sistema de missões
     public static Quest questDisponivel;
     public static Quest QuestAtiva;
     public static int progressoAtual = 0;
     public static bool historiaConcluida = false;
+    public static int missoesConcluidas = 0;
 }

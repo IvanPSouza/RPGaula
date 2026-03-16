@@ -20,6 +20,15 @@ public SistemaInventario sistemaInventario;
         AtualizarInterface();
     }
 
+    void Update()
+    {
+        //O Inventário agora lê a fortuna global do jogador o tempo todo!
+        if (textoMoedas != null)
+        {
+            textoMoedas.text = "Ouro: " + DadosGlobais.moedasAtualJogador.ToString();
+        }
+    }
+
     public void AtualizarInterface()
     {
         //1. Atualiza as Moedas

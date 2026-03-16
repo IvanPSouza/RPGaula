@@ -1,25 +1,30 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MoedaColetavel : MonoBehaviour
 {
-    public int valor;
-
-    private void Start()
-    {
-        valor = Random.Range(1, 11);//Sorteia um valor entre 1 e 10
-    
-    }
+    [Header("Configuração")]
+    [Tooltip("Quantidade de ouro que esta moeda vale ao ser coletada")]
+    public int valorDaMoeda = 1;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            SistemaInventario inventario = FindFirstObjectByType<SistemaInventario>();
-
-            if(inventario != null)
+            DadosGlobais.moedasAtualJogador += valorDaMoeda;
+            Destroy(gameObject); // Some da tela!
+        }
+        if (DadosGlobais.QuestAtiva != null)
+        {
+            if (DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.CacarMonstros ||
+                DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.ColetarItens)
             {
-                inventario.ModificadorMoedas(valor);
-                Destroy(gameObject);
+                DadosGlobais.progressoAtual++;
+                Debug.Log($"Quest: {DadosGlobais.progressoAtual}/{DadosGlobais.QuestAtiva.quantidade}");
             }
         }
     }
