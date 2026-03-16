@@ -7,6 +7,8 @@ public class MapaMissoes : MonoBehaviour
 
     public GameObject Moedas1;
 
+    //public MonoBehaviour scriptParaAtivar;
+
     void Update()
     {
         int missoes = DadosGlobais.missoesConcluidas;
@@ -14,6 +16,7 @@ public class MapaMissoes : MonoBehaviour
         if (missoes >= 1)
         {
             Moedas1.SetActive(true);
+            //scriptParaAtivar.enabled = true;
         }
 
         if (missoes >= 2)

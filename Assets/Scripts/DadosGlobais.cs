@@ -26,4 +26,10 @@ public static class DadosGlobais
     public static int progressoAtual = 0;
     public static bool historiaConcluida = false;
     public static int missoesConcluidas = 0;
+
+    //Dados de mercado
+    public static int QuantidadeNutrientes = 5;
+
+    //Dados itens mapa
+    public static List<string> itensColetados = new List<string>();
 }

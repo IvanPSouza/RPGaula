@@ -425,7 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecompensaInimigo
   xpDrop: 50
-  moedasDrop: 5
+  moedasDrop: 1
 --- !u!1 &7675258939901201242
 GameObject:
   m_ObjectHideFlags: 0

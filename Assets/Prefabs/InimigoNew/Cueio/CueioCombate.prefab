@@ -602,4 +602,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecompensaInimigo
   xpDrop: 50
-  moedasDrop: 5
+  moedasDrop: 10

@@ -17,14 +17,15 @@ MonoBehaviour:
   nomeNPCEmissor: Nabo
   nomeNPCDestino: Nabo
   falaInicio: "Ola Cenoura, ent\xE3o voce vai sair hoje n\xE3o \xE9 mesmo? eu posso
-    abrir o caminho pra voce mas preciso de 5 moedas e te darei nutrientes como agradecimento"
+    abrir o caminho pra voce mas voce precisa comprar alguns nutrientes, colete 5
+    moedas para comprar"
   falaAndamento: Preciso de 5 moedas para abrir a passagem
-  falaConclusao: "Obrigado Cenoura, aqui est\xE3o seus nutrientes e abrirei o caminho
-    para voc\xE9"
-  descricaoNoHud: Encontre 5 moedas de ouro para trocar com o nabo pela abertura
+  falaConclusao: Obrigado Cenoura, pode comprar seus nutrientes com a batata ao lado,
+    irei abrir a passagem para voce
+  descricaoNoHud: Encontre 5 moedas de ouro para trocar com o Batata pela abertura
     do caminho e 5 nutrientes
   quantidade: 5
   nomeObjetivo: Moedas
   recompensaOuro: 0
-  recompensaXP: 50
+  recompensaXP: 0
   proximaQuest: {fileID: 11400000, guid: ffebce8b3c507ec4c928aca2e658a0e5, type: 2}
