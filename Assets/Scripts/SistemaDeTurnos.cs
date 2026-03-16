@@ -20,6 +20,7 @@ public class SistemaDeTurnos : MonoBehaviour
     [Header("Referências")]
     public SistemaInventario inventario; // agora ligado no inspector
     public DadosItem pocaoDeVida;
+    public DadosItem flecha;
 
     private AtributosCombate atributosHeroi;
     private List<AtributosCombate> inimigosVivos = new List<AtributosCombate>();
@@ -132,6 +133,70 @@ public class SistemaDeTurnos : MonoBehaviour
                  */
             }
 
+            inimigosVivos.RemoveAt(0);
+        }
+
+        VerificarFimDeTurnoJogador();
+    }
+
+    public void BotaoAtacarForte()
+    {
+        if (estadoAtual != EstadoBatalha.TurnoJogador)
+            return;
+
+        if (inimigosVivos.Count == 0)
+            return;
+
+        // Verifica se há poção disponível
+        bool consumiuFlecha = false;
+
+        for (int i = 0; i < DadosGlobais.inventarioAtual.Count; i++)
+        {
+            SlotInventario slot = DadosGlobais.inventarioAtual[i];
+
+            if (slot.dadosDoItem == flecha && slot.quantidade > 0)
+            {
+                slot.quantidade--;
+                consumiuFlecha = true;
+
+                if (slot.quantidade <= 0)
+                {
+                    DadosGlobais.inventarioAtual.RemoveAt(i);
+                    if (btnPocao != null)
+                        btnPocao.interactable = false;
+                }
+
+                break;
+            }
+        }
+
+        if (!consumiuFlecha)
+        {
+            Debug.Log("Você não tem poções para este ataque!");
+            return; // não realiza ataque
+        }
+
+        // Escolhe o inimigo alvo (o primeiro da lista)
+        AtributosCombate alvo = inimigosVivos[0];
+        alvo.ReceberDano(atributosHeroi.danoAtual * 2);
+
+        if (alvo.hpAtual <= 0)
+        {
+            RecompensaInimigo loot = alvo.GetComponent<RecompensaInimigo>();
+            ProgressoJogador progresso = atributosHeroi.GetComponent<ProgressoJogador>();
+
+            if (loot != null && progresso != null)
+            {
+                progresso.GanharXP(loot.xpDrop);
+                DadosGlobais.moedasAtualJogador += loot.moedasDrop;
+
+                Debug.Log($"Você encontrou {loot.moedasDrop} moedas!");
+
+                DadosGlobais.xpAtualJogador = progresso.xpAtual;
+                DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
+            }
+
+            // Remove o inimigo morto da lista
             inimigosVivos.RemoveAt(0);
         }
 
