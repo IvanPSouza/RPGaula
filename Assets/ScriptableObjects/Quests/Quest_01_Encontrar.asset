@@ -20,7 +20,7 @@ MonoBehaviour:
     abrir o caminho pra voce mas voce precisa comprar alguns nutrientes, colete 5
     moedas para comprar"
   falaAndamento: Preciso de 5 moedas para abrir a passagem
-  falaConclusao: Obrigado Cenoura, pode comprar seus nutrientes com a batata ao lado,
+  falaConclusao: Obrigado Cenoura, pode comprar seus nutrientes com a Cebola ao lado,
     irei abrir a passagem para voce
   descricaoNoHud: Encontre 5 moedas de ouro para trocar com o Batata pela abertura
     do caminho e 5 nutrientes

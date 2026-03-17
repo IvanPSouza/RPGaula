@@ -22,6 +22,9 @@ public class SistemaDeTurnos : MonoBehaviour
     public DadosItem pocaoDeVida;
     public DadosItem flecha;
 
+    public string nomeDoPrefab; // Nome do objeto na cena
+    public bool Coelho = false;
+
     private AtributosCombate atributosHeroi;
     private List<AtributosCombate> inimigosVivos = new List<AtributosCombate>();
 
@@ -29,6 +32,27 @@ public class SistemaDeTurnos : MonoBehaviour
     {
         estadoAtual = EstadoBatalha.Preparacao;
         StartCoroutine(ConfigurarBatalha());
+
+    }
+    private void Update()
+    {
+        ProcurarNaCena();
+    }
+
+    void ProcurarNaCena()
+    {
+        GameObject obj = GameObject.Find(nomeDoPrefab);
+
+        if (obj != null)
+        {
+            Coelho = true;
+            Debug.Log("Prefab encontrado!");
+        }
+        else
+        {
+            Coelho = false;
+            Debug.Log("Prefab não encontrado.");
+        }
     }
 
     IEnumerator ConfigurarBatalha()
@@ -121,7 +145,8 @@ public class SistemaDeTurnos : MonoBehaviour
                 DadosGlobais.xpAtualJogador = progresso.xpAtual;
                 DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
 
-               /* if (DadosGlobais.QuestAtiva != null)
+               //*
+               if (DadosGlobais.QuestAtiva != null && Coelho)
                 {
                     if (DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.CacarMonstros ||
                         DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.ColetarItens)
@@ -130,7 +155,7 @@ public class SistemaDeTurnos : MonoBehaviour
                         Debug.Log($"Quest: {DadosGlobais.progressoAtual}/{DadosGlobais.QuestAtiva.quantidade}");
                     }
                 }
-                 */
+                 //*/
             }
 
             inimigosVivos.RemoveAt(0);

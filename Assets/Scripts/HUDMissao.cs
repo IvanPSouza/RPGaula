@@ -25,7 +25,7 @@ public class HUDMissao : MonoBehaviour
         }
         else if (DadosGlobais.questDisponivel != null)
         {
-            textoTrackerQuest.text = "Nova Missão: Procure o triângulo azul no(a) " + DadosGlobais.questDisponivel.nomeNPCEmissor + " Moedas são os placeholders para missões de coleta, não colete nenhuma ate começar a  missão, Aperte 'I' para abrir o inventario e 'C' para o menu de crafting";
+            textoTrackerQuest.text = "Nova Missão: Procure o triângulo azul no(a) " + DadosGlobais.questDisponivel.nomeNPCEmissor + " e aperte a tecla E quando perto do NPC";
         }
         else
         {

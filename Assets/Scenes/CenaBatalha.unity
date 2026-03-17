@@ -188,6 +188,8 @@ MonoBehaviour:
   inventario: {fileID: 0}
   pocaoDeVida: {fileID: 11400000, guid: 702f101cb38700d419932536a9deb420, type: 2}
   flecha: {fileID: 11400000, guid: 3ef3a7077c643c244bb965905572a664, type: 2}
+  nomeDoPrefab: CueioCombate(Clone)
+  Coelho: 0
 --- !u!1 &231450913
 GameObject:
   m_ObjectHideFlags: 0
