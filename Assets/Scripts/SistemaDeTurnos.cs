@@ -73,7 +73,6 @@ public class SistemaDeTurnos : MonoBehaviour
             Debug.LogError("AtributosCombate não encontrado no Player!");
             yield break;
         }
-
         atributosHeroi.minhaBarraDeVida = slideHeroi;
         atributosHeroi.AtualizarBarra();
 

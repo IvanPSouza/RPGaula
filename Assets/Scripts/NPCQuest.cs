@@ -87,7 +87,7 @@ public class NPCQuest : MonoBehaviour
 
                 if (terminouCaca || terminouChegar || terminouColeta || terminouEntrega)
                 {
-                    textoDialogo.text = quest.falaConclusao + "\n\n(Recebeu " + quest.recompensaOuro + " Ouro!)";
+                    textoDialogo.text = quest.falaConclusao /*+ "\n\n(Recebeu " + quest.recompensaOuro + " Ouro!)"*/;
                     EntregarRecompensa(quest);
                 }
                 else

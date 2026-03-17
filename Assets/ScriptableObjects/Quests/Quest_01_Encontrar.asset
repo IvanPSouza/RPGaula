@@ -18,10 +18,11 @@ MonoBehaviour:
   nomeNPCDestino: Nabo
   falaInicio: "Ola Cenoura, ent\xE3o voce vai sair hoje n\xE3o \xE9 mesmo? eu posso
     abrir o caminho pra voce mas voce precisa comprar alguns nutrientes, colete 5
-    moedas para comprar"
-  falaAndamento: Preciso de 5 moedas para abrir a passagem
+    moedas e eu vou abrir o caminho para voce"
+  falaAndamento: "Preciso que voce colete 5 moedas para abrir a passagem, n\xE3o
+    quero que voce tenha eplo menos uma chance de sobrevivencia"
   falaConclusao: Obrigado Cenoura, pode comprar seus nutrientes com a Cebola ao lado,
-    irei abrir a passagem para voce
+    irei abrir a passagem para voce, sempre pode voltar a ela para comprar mais nutrientes
   descricaoNoHud: Encontre 5 moedas de ouro para trocar com o Batata pela abertura
     do caminho e 5 nutrientes
   quantidade: 5

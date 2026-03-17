@@ -582,8 +582,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AtributosCombate
   nivel: 10
-  hpBase: 100
-  danoBase: 10
+  hpBase: 200
+  danoBase: 20
   nomePersonagem: Cueio
   hpMaximo: 100
   hpAtual: 0
