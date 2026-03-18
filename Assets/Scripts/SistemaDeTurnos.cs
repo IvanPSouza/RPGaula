@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public enum EstadoBatalha
 {
@@ -16,11 +17,15 @@ public class SistemaDeTurnos : MonoBehaviour
     [Header("UI")]
     public Slider slideHeroi;
     public Button btnPocao;
+    public Button btnFlecha;
 
     [Header("Referências")]
     public SistemaInventario inventario; // agora ligado no inspector
     public DadosItem pocaoDeVida;
     public DadosItem flecha;
+
+    [Header("Texto de feedback")]
+    public TextMeshProUGUI textoFeedback;
 
     //public string nomeDoPrefab; // Nome do objeto na cena
     //public bool Coelho = false;
@@ -34,28 +39,6 @@ public class SistemaDeTurnos : MonoBehaviour
         StartCoroutine(ConfigurarBatalha());
 
     }
-    /*
-    private void Update()
-    {
-        ProcurarNaCena();
-    }
-
-    void ProcurarNaCena()
-    {
-        GameObject obj = GameObject.Find(nomeDoPrefab);
-
-        if (obj != null)
-        {
-            Coelho = true;
-            Debug.Log("Prefab encontrado!");
-        }
-        else
-        {
-            Coelho = false;
-            Debug.Log("Prefab não encontrado.");
-        }
-    }
-    */
 
     IEnumerator ConfigurarBatalha()
     {
@@ -91,6 +74,18 @@ public class SistemaDeTurnos : MonoBehaviour
         {
             Debug.LogWarning("Inventário ou Poção não configurados no Inspector.");
         }
+        if (inventario != null && flecha != null)
+        {
+            if (!inventario.TemItem(flecha, 1))
+            {
+                if (btnFlecha != null)
+                    btnFlecha.interactable = false;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Inventário ou Poção não configurados no Inspector.");
+        }
 
         Debug.Log("Preparando a batalha...");
         yield return new WaitForSeconds(1f);
@@ -117,6 +112,7 @@ public class SistemaDeTurnos : MonoBehaviour
     void IniciarTurnoJogador()
     {
         Debug.Log("Sua vez. Pressione o botão de ataque!");
+        textoFeedback.text = "Turno da Cenoura, escolha uma ação";
         estadoAtual = EstadoBatalha.TurnoJogador;
     }
 
@@ -130,6 +126,7 @@ public class SistemaDeTurnos : MonoBehaviour
 
         AtributosCombate alvo = inimigosVivos[0];
         alvo.ReceberDano(atributosHeroi.danoAtual);
+        textoFeedback.text = $"Você causou {atributosHeroi.danoAtual} de dano";
 
         if (alvo.hpAtual <= 0)
         {
@@ -188,8 +185,8 @@ public class SistemaDeTurnos : MonoBehaviour
                 if (slot.quantidade <= 0)
                 {
                     DadosGlobais.inventarioAtual.RemoveAt(i);
-                    if (btnPocao != null)
-                        btnPocao.interactable = false;
+                    if (btnFlecha != null)
+                        btnFlecha.interactable = false;
                 }
 
                 break;
@@ -198,8 +195,13 @@ public class SistemaDeTurnos : MonoBehaviour
 
         if (!consumiuFlecha)
         {
-            Debug.Log("Você não tem poções para este ataque!");
+            textoFeedback.text = "Você não tem flechas para este ataque!";
+            Debug.Log("Você não tem flechas para este ataque!");
             return; // não realiza ataque
+        }
+        else
+        {
+            textoFeedback.text = $"Você causou {atributosHeroi.danoAtual * 2} de dano com uma flecha";
         }
 
         // Escolhe o inimigo alvo (o primeiro da lista)
@@ -219,6 +221,7 @@ public class SistemaDeTurnos : MonoBehaviour
                 Debug.Log($"Você encontrou {loot.moedasDrop} moedas!");
 
                 DadosGlobais.xpAtualJogador = progresso.xpAtual;
+
                 DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
             }
 
@@ -259,10 +262,12 @@ public class SistemaDeTurnos : MonoBehaviour
         {
             atributosHeroi.ReceberCura(50);
             Debug.Log("Você bebeu a poção!");
+            textoFeedback.text = "Você bebeu a poção! Recuperou 50 de vida";
             VerificarFimDeTurnoJogador();
         }
         else
         {
+            textoFeedback.text = "Você não tem mais poções!";
             Debug.LogWarning("Você não tem mais poções!");
         }
     }
@@ -283,18 +288,27 @@ public class SistemaDeTurnos : MonoBehaviour
 
     IEnumerator TurnoDoInimigo()
     {
+        int indice = 1;
         Debug.Log("Inimigos pensando...");
 
         foreach (AtributosCombate inimigo in inimigosVivos)
         {
             yield return new WaitForSeconds(2f);
 
-            atributosHeroi.ReceberDano(inimigo.danoBase);
-
+            atributosHeroi.ReceberDano(inimigo.danoAtual);
+            if (inimigosVivos.Count > 1)
+            {
+                textoFeedback.text = $"Praga {indice} atacou causando {inimigo.danoAtual} de dano";
+            }
+            else
+            {
+                textoFeedback.text = $"Praga atacou causando {inimigo.danoAtual} de dano";
+            }
+            indice++;
             if (atributosHeroi.hpAtual <= 0)
                 break;
         }
-
+        yield return new WaitForSeconds(2f);
         if (atributosHeroi.hpAtual <= 0)
         {
             estadoAtual = EstadoBatalha.Derrota;
@@ -320,8 +334,9 @@ public class SistemaDeTurnos : MonoBehaviour
 
         if (jogadorVenceu)
         {
+            textoFeedback.text = $"Cenoura venceu o combate";
             Debug.Log("Vitória!");
-
+            yield return new WaitForSeconds(2f);
             DadosGlobais.inimigosDerrotados.Add(DadosGlobais.idInimigoEmCombate);
 
             SceneManager.LoadScene("Mundo");
@@ -329,6 +344,8 @@ public class SistemaDeTurnos : MonoBehaviour
         else
         {
             Debug.Log("Derrota...");
+            textoFeedback.text = $"Esse é o fim de Cenoura";
+            yield return new WaitForSeconds(2f);
             SceneManager.LoadScene("GameOver");
         }
     }

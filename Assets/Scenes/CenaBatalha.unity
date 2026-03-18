@@ -185,9 +185,11 @@ MonoBehaviour:
   estadoAtual: 0
   slideHeroi: {fileID: 1376374145}
   btnPocao: {fileID: 646722100}
+  btnFlecha: {fileID: 749576155}
   inventario: {fileID: 0}
   pocaoDeVida: {fileID: 11400000, guid: 702f101cb38700d419932536a9deb420, type: 2}
   flecha: {fileID: 11400000, guid: 3ef3a7077c643c244bb965905572a664, type: 2}
+  textoFeedback: {fileID: 481027650}
 --- !u!1 &231450913
 GameObject:
   m_ObjectHideFlags: 0
