@@ -22,8 +22,8 @@ public class SistemaDeTurnos : MonoBehaviour
     public DadosItem pocaoDeVida;
     public DadosItem flecha;
 
-    public string nomeDoPrefab; // Nome do objeto na cena
-    public bool Coelho = false;
+    //public string nomeDoPrefab; // Nome do objeto na cena
+    //public bool Coelho = false;
 
     private AtributosCombate atributosHeroi;
     private List<AtributosCombate> inimigosVivos = new List<AtributosCombate>();
