@@ -34,6 +34,7 @@ public class SistemaDeTurnos : MonoBehaviour
         StartCoroutine(ConfigurarBatalha());
 
     }
+    /*
     private void Update()
     {
         ProcurarNaCena();
@@ -54,6 +55,7 @@ public class SistemaDeTurnos : MonoBehaviour
             Debug.Log("Prefab não encontrado.");
         }
     }
+    */
 
     IEnumerator ConfigurarBatalha()
     {
@@ -144,7 +146,7 @@ public class SistemaDeTurnos : MonoBehaviour
                 DadosGlobais.xpAtualJogador = progresso.xpAtual;
                 DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
 
-               //*
+               /*
                if (DadosGlobais.QuestAtiva != null && Coelho)
                 {
                     if (DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.CacarMonstros ||

@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class CraftingSimples : MonoBehaviour
 {
@@ -12,18 +13,39 @@ public class CraftingSimples : MonoBehaviour
 
     public int custo = 1;
     public int quantidadeProduzida = 5;
+    public TextMeshProUGUI textoFeedback;
+    public string NomeDoItem;
+    private int somatorio = 0;
 
     public void CraftarSumo()
     {
         if (inventario.TemItem(Componentes, custo))
         {
+            somatorio += quantidadeProduzida;
             inventario.SubtrairItem(Componentes, custo);
             inventario.AdicionarItem(Sumo, quantidadeProduzida);
-            Debug.Log($"Sucesso! {quantidadeProduzida} x sumos criados");
+            textoFeedback.text = $"Sucesso! {somatorio} {NomeDoItem} criadas";
         }
         else
         {
-            Debug.Log("Falha: voce não tem os itens necessarios");
+            textoFeedback.text = "Falha: voce não tem os itens necessarios";
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            somatorio = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            somatorio = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            somatorio = 0;
         }
     }
 }

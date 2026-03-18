@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -7,6 +8,7 @@ public class ControleUI : MonoBehaviour
     //Adicionar TODOS os paineis do jogo
     public GameObject PainelInventario;
     public GameObject PainelCrafting;
+    public TextMeshProUGUI textoFeedbackCraft;
 
     // Update is called once per frame
     void Update()
@@ -19,6 +21,7 @@ public class ControleUI : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
+            textoFeedbackCraft.text = "...";
             PainelInventario.SetActive(false);
             //Inverte o estado do menu crafting, abre/fecha
             PainelCrafting.SetActive(!PainelCrafting.activeSelf);

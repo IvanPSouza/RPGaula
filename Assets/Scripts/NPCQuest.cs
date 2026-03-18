@@ -30,7 +30,7 @@ public class NPCQuest : MonoBehaviour
     private void Update()
     {
         AtualizarIconeVisual();
-        if (jogadorPerto && Input.GetKeyDown(KeyCode.E))
+        if (jogadorPerto && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space)))
         {
             Interagir();
         }
@@ -108,6 +108,8 @@ public class NPCQuest : MonoBehaviour
         {
             if (DadosGlobais.questDisponivel.nomeNPCEmissor == nome)
             {
+                // Conta missão concluída
+                DadosGlobais.missoesConcluidas++;
                 textoDialogo.text = DadosGlobais.questDisponivel.falaInicio;
                 DadosGlobais.QuestAtiva = DadosGlobais.questDisponivel;
                 DadosGlobais.questDisponivel = null;
@@ -129,9 +131,6 @@ public class NPCQuest : MonoBehaviour
         //Entrega as recompensas ao player
         DadosGlobais.moedasAtualJogador += questConcluida.recompensaOuro;
         DadosGlobais.xpAtualJogador += questConcluida.recompensaXP;
-
-        // Conta missão concluída
-        DadosGlobais.missoesConcluidas++;
 
         //Proxima quest da questline
         DadosGlobais.QuestAtiva = null;

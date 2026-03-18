@@ -16,7 +16,7 @@ public class Quest : ScriptableObject
     public string nomeNPCDestino;
 
     [Header("Textos da missão")]
-    [TextArea] public string falaInicio; // Quando o NOC da a quest
+    [TextArea] public string falaInicio; // Quando o NPC da a quest
     [TextArea] public string falaAndamento; //Quando o jogador ainda não acabou a quest
     [TextArea] public string falaConclusao; //Quando o jogador entrega a quest
     [TextArea] public string descricaoNoHud; //Texto do rastreador
@@ -29,6 +29,7 @@ public class Quest : ScriptableObject
     [Header("Recompensas")]
     public int recompensaOuro;
     public int recompensaXP;
+    public DadosItem nutrientes;
 
     [Header("Sequencia da Quest Line")]
     [Tooltip("Deixe vazio caso seja a ultima quest!")]
