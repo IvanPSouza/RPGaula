@@ -8,7 +8,8 @@ public SistemaInventario sistemaInventario;
     public GameObject prefabSlot;
 
     [Header("Economia")]
-    public TextMeshProUGUI textoMoedas;
+    public TextMeshProUGUI textoMoedas1;
+    public TextMeshProUGUI textoMoedas2;
 
     private void Start()
     {
@@ -23,22 +24,30 @@ public SistemaInventario sistemaInventario;
     void Update()
     {
         //O Inventário agora lê a fortuna global do jogador o tempo todo!
-        if (textoMoedas != null)
+        if (textoMoedas1 != null)
         {
-            textoMoedas.text = "Ouro: " + DadosGlobais.moedasAtualJogador.ToString();
+            textoMoedas1.text = "Ouro: " + DadosGlobais.moedasAtualJogador.ToString();
+        }
+        if (textoMoedas2 != null)
+        {
+            textoMoedas2.text = "Ouro: " + DadosGlobais.moedasAtualJogador.ToString();
         }
     }
 
     public void AtualizarInterface()
     {
         //1. Atualiza as Moedas
-        if(textoMoedas != null)
+        if(textoMoedas1 != null)
         {
-            textoMoedas.text = "Ouro:" + sistemaInventario.moedas.ToString();
+            textoMoedas1.text = "Ouro:" + sistemaInventario.moedas.ToString();
+        }
+        if (textoMoedas2 != null)
+        {
+            textoMoedas2.text = "Ouro:" + sistemaInventario.moedas.ToString();
         }
 
         //2. Limpeza do grid
-        foreach(Transform item in containerGrid)
+        foreach (Transform item in containerGrid)
         {
             Destroy(item.gameObject);
         }

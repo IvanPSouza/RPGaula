@@ -23,7 +23,7 @@ MonoBehaviour:
     voce tenha pelo menos uma chance de sobrevivencia
   falaConclusao: Obrigado Cenoura, pode comprar seus nutrientes com a Cebola ao lado,
     irei abrir a passagem para voce, sempre pode voltar a ela para comprar mais nutrientes
-  descricaoNoHud: Encontre 5 moedas de ouro para trocar com o Batata pela abertura
+  descricaoNoHud: Encontre 5 moedas de ouro para trocar com o Cebola pela abertura
     do caminho e 5 nutrientes
   quantidade: 5
   nomeObjetivo: Moedas
