@@ -30,7 +30,7 @@ public class NPCQuest : MonoBehaviour
     private void Update()
     {
         AtualizarIconeVisual();
-        if (jogadorPerto && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space)))
+        if (jogadorPerto && (Input.GetKeyDown(KeyCode.E) /*|| Input.GetKeyDown(KeyCode.Space)*/))
         {
             Interagir();
         }

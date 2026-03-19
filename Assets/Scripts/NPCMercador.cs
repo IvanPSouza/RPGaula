@@ -11,14 +11,20 @@ public class NPCMercador : MonoBehaviour
     public SistemaInventario inventario;
     public DadosItem nutrientes;
     public int precoNutrientes;
+    public int nutriComprados;
 
     private bool jogadorPerto;
 
     private void Update()
     {
-        if(jogadorPerto && Input.GetKeyDown(KeyCode.E))
+        if (jogadorPerto && Input.GetKeyDown(KeyCode.E))
         {
             AbrirLoja();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.C))
+        {
+            FecharLoja();
         }
     }
 
@@ -26,11 +32,13 @@ public class NPCMercador : MonoBehaviour
     {
         painelLoja.SetActive(true);
         textoFeedback.text = "Seja bem-vinda!\ngostaria de alguns nutrientes?";
+        nutriComprados = 0;
     }
 
     public void FecharLoja()
     {
         painelLoja.SetActive(false);
+        nutriComprados = 0;
     }
 
     public void ComprarNutrientes()
@@ -47,13 +55,22 @@ public class NPCMercador : MonoBehaviour
                 inventario.AdicionarItem(nutrientes, 5);
                 DadosGlobais.QuantidadeNutrientes = 1;
                 //4. Exibir o feedback da compra
-                textoFeedback.text = $"Nutrientes comprados com sucesso! essa e a unica vez que vou te dar 5 por esse preço. " + $"Saldo atal: {DadosGlobais.moedasAtualJogador}";
+                textoFeedback.text = $"Nutrientes comprados com sucesso! essa e a unica vez que vou te dar 5 por esse preço." /*+ $" Saldo atal: {DadosGlobais.moedasAtualJogador}"*/;
             }
             else
             {
+                nutriComprados++;
                 inventario.AdicionarItem(nutrientes, 1);
                 //4. Exibir o feedback da compra
-                textoFeedback.text = $"Nutriente comprado com sucesso! " + $"Saldo atal: {DadosGlobais.moedasAtualJogador}";
+                if(nutriComprados == 1)
+                {
+                    textoFeedback.text = $"Nutriente comprado com sucesso!" /*+ $" Saldo atal: {DadosGlobais.moedasAtualJogador}"*/;
+                }
+                else
+                {
+                    textoFeedback.text = $"{nutriComprados} Nutrientes comprados com sucesso!" /*+ $" Saldo atal: {DadosGlobais.moedasAtualJogador}"*/;
+                }
+
             }
         }
         else
