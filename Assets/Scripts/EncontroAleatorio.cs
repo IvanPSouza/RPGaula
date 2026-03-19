@@ -10,17 +10,42 @@ public class EncontroAleatorio : MonoBehaviour
     public List<GameObject> inimigos;
 
     [Header("Chance de encontro")]
-    public int chanceMax = 500;
+    public int chanceMax = 100;
 
     // ===== CONTROLE DE TEMPO =====
     private float proximoCheck = 0f;
     public float intervalo = 1f;
 
+    // ===== CONTROLE DE MOVIMENTO =====
+    private Vector2 ultimaPosicao;
+    private bool primeiraVez = true;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            // ===== CONTROLE DE TEMPO (1 SEGUNDO) =====
+            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
+            if (rb == null) return;
+
+            // ===== CALCULA VELOCIDADE REAL =====
+            if (primeiraVez)
+            {
+                ultimaPosicao = rb.position;
+                primeiraVez = false;
+                return;
+            }
+
+            float distancia = Vector2.Distance(rb.position, ultimaPosicao);
+            float velocidadeCalculada = distancia / Time.deltaTime;
+
+            ultimaPosicao = rb.position;
+
+            bool estaMovendo = velocidadeCalculada > 0.1f;
+
+            if (!estaMovendo)
+                return;
+
+            // ===== CONTROLE DE TEMPO =====
             if (Time.time < proximoCheck)
                 return;
 
