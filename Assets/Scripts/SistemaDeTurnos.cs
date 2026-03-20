@@ -19,6 +19,9 @@ public class SistemaDeTurnos : MonoBehaviour
     public Button btnPocao;
     public Button btnFlecha;
 
+    [Header("Inventário UI")]
+    public TextMeshProUGUI textoInventario;
+
     [Header("Referências")]
     public SistemaInventario inventario;
     public DadosItem pocaoDeVida;
@@ -30,7 +33,6 @@ public class SistemaDeTurnos : MonoBehaviour
     private AtributosCombate atributosHeroi;
     private List<AtributosCombate> inimigosVivos = new List<AtributosCombate>();
 
-    // ===== NOVAS VARIÁVEIS =====
     private int xpGanhoTotal = 0;
     private int ouroGanhoTotal = 0;
     private bool subiuNivel = false;
@@ -63,7 +65,6 @@ public class SistemaDeTurnos : MonoBehaviour
         atributosHeroi.minhaBarraDeVida = slideHeroi;
         atributosHeroi.AtualizarBarra();
 
-        // ===== GUARDA NÍVEL INICIAL =====
         nivelAntes = atributosHeroi.nivel;
 
         if (inventario != null && pocaoDeVida != null)
@@ -92,6 +93,7 @@ public class SistemaDeTurnos : MonoBehaviour
                 inimigosVivos.Add(inimigo);
         }
 
+        AtualizarTextoInventario();
         IniciarTurnoJogador();
     }
 
@@ -99,6 +101,34 @@ public class SistemaDeTurnos : MonoBehaviour
     {
         textoFeedback.text = "Turno da Cenoura, escolha uma ação";
         estadoAtual = EstadoBatalha.TurnoJogador;
+
+        AtualizarTextoInventario();
+    }
+
+    // ===== CONTADOR DE ITENS =====
+    int ContarItem(DadosItem item)
+    {
+        int quantidade = 0;
+
+        foreach (SlotInventario slot in DadosGlobais.inventarioAtual)
+        {
+            if (slot.dadosDoItem == item)
+            {
+                quantidade += slot.quantidade;
+            }
+        }
+
+        return quantidade;
+    }
+
+    void AtualizarTextoInventario()
+    {
+        if (textoInventario == null) return;
+
+        int qtdPocoes = ContarItem(pocaoDeVida);
+        int qtdFlechas = ContarItem(flecha);
+
+        textoInventario.text = $"Poções: {qtdPocoes}\nFlechas: {qtdFlechas}";
     }
 
     public void BotaoAtacarFraco()
@@ -121,14 +151,12 @@ public class SistemaDeTurnos : MonoBehaviour
                 progresso.GanharXP(loot.xpDrop);
                 DadosGlobais.moedasAtualJogador += loot.moedasDrop;
 
-                // ===== ACUMULA =====
                 xpGanhoTotal += loot.xpDrop;
                 ouroGanhoTotal += loot.moedasDrop;
 
                 DadosGlobais.xpAtualJogador = progresso.xpAtual;
                 DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
 
-                // ===== VERIFICA LEVEL UP =====
                 if (atributosHeroi.nivel > nivelAntes)
                 {
                     subiuNivel = true;
@@ -157,6 +185,8 @@ public class SistemaDeTurnos : MonoBehaviour
             {
                 slot.quantidade--;
                 consumiuFlecha = true;
+
+                AtualizarTextoInventario(); // <<< ATUALIZA AQUI
 
                 if (slot.quantidade <= 0)
                 {
@@ -192,14 +222,12 @@ public class SistemaDeTurnos : MonoBehaviour
                 progresso.GanharXP(loot.xpDrop);
                 DadosGlobais.moedasAtualJogador += loot.moedasDrop;
 
-                // ===== ACUMULA =====
                 xpGanhoTotal += loot.xpDrop;
                 ouroGanhoTotal += loot.moedasDrop;
 
                 DadosGlobais.xpAtualJogador = progresso.xpAtual;
                 DadosGlobais.nivelAtualJogador = atributosHeroi.nivel;
 
-                // ===== VERIFICA LEVEL UP =====
                 if (atributosHeroi.nivel > nivelAntes)
                 {
                     subiuNivel = true;
@@ -226,6 +254,8 @@ public class SistemaDeTurnos : MonoBehaviour
             {
                 slot.quantidade--;
                 consumiu = true;
+
+                AtualizarTextoInventario(); // <<< ATUALIZA AQUI
 
                 if (slot.quantidade <= 0)
                 {
