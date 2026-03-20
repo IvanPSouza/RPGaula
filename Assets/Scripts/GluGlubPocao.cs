@@ -18,7 +18,14 @@ public class GluGlubPocao : MonoBehaviour
         if (player != null)
             atributosPlayer = player.GetComponent<AtributosCombate>();
 
-        inventarioSistema = FindObjectOfType<SistemaInventario>();
+        inventarioSistema = FindFirstObjectByType<SistemaInventario>();
+    }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E)|| Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            textoFeedback.text = "...";
+        }
     }
 
     public void UsarPocao()
