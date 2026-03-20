@@ -16,12 +16,13 @@ MonoBehaviour:
   tipoMissao: 3
   nomeNPCEmissor: Alho
   nomeNPCDestino: Alho
-  falaInicio: Seu caminho esta livre, saia do subsolo agora
-  falaAndamento: "Va la, n\xE3o tem nada no seu caminho"
-  falaConclusao: thau Cenourinha
-  descricaoNoHud: Saia do subsolo
+  falaInicio: "Seu caminho est\xE1 livre. Saia do subsolo agora."
+  falaAndamento: "V\xE1 l\xE1, n\xE3o tem nada no seu caminho."
+  falaConclusao: Tchau, Cenourinha.
+  descricaoNoHud: Saia do subsolo.
   quantidade: 0
   nomeObjetivo: 
   recompensaOuro: 0
   recompensaXP: 0
+  nutrientes: {fileID: 0}
   proximaQuest: {fileID: 0}

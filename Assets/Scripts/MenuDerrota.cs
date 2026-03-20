@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuDerrota : MonoBehaviour
 {
-    public void BotaoJogarNovamente()
+    public void BotaoJogarNovamente(string CenaBatalha)
     {
-        SceneManager.LoadScene("CenaBatalha");
+        SceneManager.LoadScene(CenaBatalha);
     }
 }

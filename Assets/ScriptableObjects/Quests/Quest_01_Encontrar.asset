@@ -16,15 +16,16 @@ MonoBehaviour:
   tipoMissao: 2
   nomeNPCEmissor: Nabo
   nomeNPCDestino: Nabo
-  falaInicio: "Ola Cenoura, ent\xE3o voce vai sair hoje n\xE3o \xE9 mesmo? eu posso
-    abrir o caminho pra voce mas voce precisa comprar alguns nutrientes, colete 5
-    moedas e eu vou abrir o caminho para voce"
-  falaAndamento: Preciso que voce colete 5 moedas para abrir a passagem, quero que
-    voce tenha pelo menos uma chance de sobrevivencia
-  falaConclusao: Obrigado Cenoura, pode comprar seus nutrientes com a Cebola ao lado,
-    irei abrir a passagem para voce, sempre pode voltar a ela para comprar mais nutrientes
+  falaInicio: "Ol\xE1, Cenoura. Ent\xE3o voc\xEA vai sair hoje, n\xE3o \xE9 mesmo?
+    Eu posso abrir o caminho para voc\xEA, mas voc\xEA precisa comprar alguns nutrientes.
+    Colete 5 moedas e eu abrirei o caminho para voc\xEA."
+  falaAndamento: "Preciso que voc\xEA colete 5 moedas para abrir a passagem. Quero
+    que voc\xEA tenha pelo menos uma chance de sobreviv\xEAncia."
+  falaConclusao: "Obrigado, Cenoura. Pode comprar seus nutrientes com o Cebola ao
+    lado. Irei abrir a passagem para voc\xEA. Sempre pode voltar a ela para comprar
+    mais nutrientes."
   descricaoNoHud: Encontre 5 moedas de ouro para trocar com o Cebola pela abertura
-    do caminho e 5 nutrientes
+    do caminho e por 5 nutrientes.
   quantidade: 5
   nomeObjetivo: Moedas
   recompensaOuro: 0

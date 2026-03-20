@@ -16,12 +16,14 @@ MonoBehaviour:
   tipoMissao: 1
   nomeNPCEmissor: Alho
   nomeNPCDestino: Alho
-  falaInicio: O monstro e grande e feroz, mate-o para chegar a superficie
+  falaInicio: "H\xE1 um monstro grande e feroz do outro lado. Mate-o para chegar
+    \xE0 superf\xEDcie."
   falaAndamento: Mate aquela fera!
-  falaConclusao: Parabens por matar a fera
-  descricaoNoHud: Mate o monstro para escapar do subsolo
+  falaConclusao: "Parab\xE9ns por matar a fera."
+  descricaoNoHud: Mate o monstro para escapar do subsolo.
   quantidade: 1
   nomeObjetivo: Coelho
   recompensaOuro: 100
   recompensaXP: 5000
+  nutrientes: {fileID: 0}
   proximaQuest: {fileID: 11400000, guid: f6af1ae0cf314f84bbe6d8da29e6c3e5, type: 2}

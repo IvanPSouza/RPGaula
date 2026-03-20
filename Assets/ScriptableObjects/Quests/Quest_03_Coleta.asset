@@ -16,16 +16,16 @@ MonoBehaviour:
   tipoMissao: 2
   nomeNPCEmissor: Alho
   nomeNPCDestino: Alho
-  falaInicio: "Para passar por aqui preciso que colete 2 peda\xE7os de isntrumentos
-    musicais, um aa esquerda e ouro a direita daqui, volte quando tiver eles coletados"
-  falaAndamento: Va la cenourinha, eu acredito em ti
-  falaConclusao: 'Agora a passagem se abriu, boa sorte em sua luta contra o monstro
-    atras do mycelium
-
-'
-  descricaoNoHud: Encontre as duas metades do instrumento musical e concerte-o
+  falaInicio: "Para passar por aqui, preciso que voc\xEA colete 2 peda\xE7os de instrumentos
+    musicais, um \xE0 esquerda e outro \xE0 direita daqui. Volte quando tiver coletado
+    ambos."
+  falaAndamento: "V\xE1 l\xE1, cenourinha, eu acredito em ti."
+  falaConclusao: "Agora a passagem se abriu. Boa sorte em sua luta contra o monstro
+    atr\xE1s do mycelium."
+  descricaoNoHud: Encontre as duas metades do instrumento musical
   quantidade: 2
   nomeObjetivo: "Peda\xE7o de instrumento"
   recompensaOuro: 10
   recompensaXP: 50
+  nutrientes: {fileID: 0}
   proximaQuest: {fileID: 11400000, guid: 00ef711dc12eea74890fe156a3677531, type: 2}

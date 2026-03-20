@@ -16,13 +16,14 @@ MonoBehaviour:
   tipoMissao: 0
   nomeNPCEmissor: Nabo
   nomeNPCDestino: Alho
-  falaInicio: Comece sua jornada Cenoura, estou torcendo por voce
-  falaAndamento: Comece sua jornada Cenoura, estou torcendo por voce
-  falaConclusao: "Ola Cenourinha, pela sua cara imagino que n\xE3o esperava ver uma
-    alma viva aqui, como esta?"
-  descricaoNoHud: "Chegue ate o fim do caminho dos pulg\xF5es"
+  falaInicio: "Comece sua jornada, Cenoura. Estou torcendo por voc\xEA."
+  falaAndamento: "Comece sua jornada, Cenoura. Estou torcendo por voc\xEA."
+  falaConclusao: "Ol\xE1, Cenourinha. Pela sua cara, imagino que n\xE3o esperava
+    ver uma alma viva aqui. Como est\xE1?"
+  descricaoNoHud: "Chegue at\xE9 o fim do caminho dos pulg\xF5es."
   quantidade: 0
   nomeObjetivo: 
   recompensaOuro: 0
   recompensaXP: 50
+  nutrientes: {fileID: 0}
   proximaQuest: {fileID: 11400000, guid: c8bb476e088bb0841aaf043fa2133358, type: 2}
