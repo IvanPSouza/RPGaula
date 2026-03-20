@@ -20,10 +20,29 @@ public class EncontroAleatorio : MonoBehaviour
     private Vector2 ultimaPosicao;
     private bool primeiraVez = true;
 
+    // ===== NOVO: DELAY AO ENTRAR =====
+    private float tempoLiberado = 0f;
+    public float delayInicial = 5f;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            tempoLiberado = Time.time + delayInicial;
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            // BLOQUEIO DE 5 SEGUNDOS
+            if (Time.time < tempoLiberado)
+            {
+                Debug.Log($"Ainda não. Faltam {(Time.time + delayInicial) - tempoLiberado}");
+            return;
+            }
+
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             if (rb == null) return;
 
