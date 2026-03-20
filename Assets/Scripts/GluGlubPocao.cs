@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class GluGlubPocao : MonoBehaviour
 {
@@ -11,20 +10,20 @@ public class GluGlubPocao : MonoBehaviour
     public TextMeshProUGUI textoFeedback;
 
     private AtributosCombate atributosPlayer;
+    private SistemaInventario inventarioSistema;
 
     void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-
         if (player != null)
-        {
             atributosPlayer = player.GetComponent<AtributosCombate>();
-        }
+
+        inventarioSistema = FindObjectOfType<SistemaInventario>();
     }
 
     public void UsarPocao()
     {
-        if (atributosPlayer == null) return;
+        if (atributosPlayer == null || inventarioSistema == null) return;
 
         if (atributosPlayer.hpAtual >= atributosPlayer.hpMaximo)
         {
@@ -33,29 +32,14 @@ public class GluGlubPocao : MonoBehaviour
             return;
         }
 
-        bool consumiu = false;
-
-        foreach (SlotInventario slot in DadosGlobais.inventarioAtual)
+        // Verifica se o jogador tem pelo menos 1 poção
+        if (inventarioSistema.TemItem(pocaoDeVida, 1))
         {
-            if (slot.dadosDoItem == pocaoDeVida && slot.quantidade > 0)
-            {
-                slot.quantidade--;
-                consumiu = true;
+            // Remove 1 poção do inventário usando o método do SistemaInventario
+            inventarioSistema.SubtrairItem(pocaoDeVida, 1);
 
-                if (slot.quantidade <= 0)
-                {
-                    DadosGlobais.inventarioAtual.Remove(slot);
-                }
-
-                break;
-            }
-        }
-
-        if (consumiu)
-        {
+            // Cura o jogador
             atributosPlayer.ReceberCura(50);
-
-            // ATUALIZA DADO GLOBAL
             DadosGlobais.hpAtualJogador = atributosPlayer.hpAtual;
 
             if (textoFeedback != null)
