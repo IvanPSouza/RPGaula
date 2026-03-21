@@ -55,7 +55,7 @@ public class NPCMercador : MonoBehaviour
                 inventario.AdicionarItem(nutrientes, 5);
                 DadosGlobais.QuantidadeNutrientes = 1;
                 //4. Exibir o feedback da compra
-                textoFeedback.text = $"Nutrientes comprados com sucesso! essa e a unica vez que vou te dar 5 por esse preço." /*+ $" Saldo atal: {DadosGlobais.moedasAtualJogador}"*/;
+                textoFeedback.text = $"Nutrientes comprados com sucesso! Esta é a única vez que vou te dar 5 por esse preço." /*+ $" Saldo atal: {DadosGlobais.moedasAtualJogador}"*/;
             }
             else
             {
