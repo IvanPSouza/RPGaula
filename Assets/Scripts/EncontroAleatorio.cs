@@ -24,11 +24,28 @@ public class EncontroAleatorio : MonoBehaviour
     private float tempoLiberado = 0f;
     public float delayInicial = 5f;
 
+    // ===== Darkness ======
+    public GameObject Darkness1;
+    public GameObject Darkness2;
+    public GameObject Darkness3;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             tempoLiberado = Time.time + delayInicial;
+            Darkness1.SetActive(true);
+            Darkness2.SetActive(true);
+            Darkness3.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Darkness1.SetActive(false);
+            Darkness2.SetActive(false);
+            Darkness3.SetActive(false);
         }
     }
 
