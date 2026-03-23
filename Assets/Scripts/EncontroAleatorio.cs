@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,24 +30,56 @@ public class EncontroAleatorio : MonoBehaviour
     public GameObject Darkness2;
     public GameObject Darkness3;
 
+    [Header("Delay entre Darkness")]
+    public float delayEntreDarkness = 0.5f;
+
+    // ===== CONTROLE DE COROUTINE =====
+    private Coroutine rotinaAtual;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             tempoLiberado = Time.time + delayInicial;
-            Darkness1.SetActive(true);
-            Darkness2.SetActive(true);
-            Darkness3.SetActive(true);
+
+            if (rotinaAtual != null)
+                StopCoroutine(rotinaAtual);
+
+            rotinaAtual = StartCoroutine(AtivarDarknessSequencial());
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Darkness1.SetActive(false);
-            Darkness2.SetActive(false);
-            Darkness3.SetActive(false);
+            if (rotinaAtual != null)
+                StopCoroutine(rotinaAtual);
+
+            rotinaAtual = StartCoroutine(DesativarDarknessSequencial());
         }
+    }
+
+    IEnumerator AtivarDarknessSequencial()
+    {
+        Darkness1.SetActive(true);
+        yield return new WaitForSeconds(delayEntreDarkness);
+
+        Darkness2.SetActive(true);
+        yield return new WaitForSeconds(delayEntreDarkness);
+
+        Darkness3.SetActive(true);
+    }
+
+    IEnumerator DesativarDarknessSequencial()
+    {
+        Darkness3.SetActive(false);
+        yield return new WaitForSeconds(delayEntreDarkness);
+
+        Darkness2.SetActive(false);
+        yield return new WaitForSeconds(delayEntreDarkness);
+
+        Darkness1.SetActive(false);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -56,8 +89,8 @@ public class EncontroAleatorio : MonoBehaviour
             // BLOQUEIO DE 5 SEGUNDOS
             if (Time.time < tempoLiberado)
             {
-                Debug.Log($"Ainda não. Faltam {(Time.time + delayInicial) - tempoLiberado}");
-            return;
+                Debug.Log($"Ainda não. Faltam {(tempoLiberado - Time.time):F2}s");
+                return;
             }
 
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
