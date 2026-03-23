@@ -23,7 +23,7 @@ MonoBehaviour:
     que voc\xEA tenha pelo menos uma chance de sobreviv\xEAncia."
   falaConclusao: "Obrigado, Cenoura. Pode comprar seus nutrientes com o Cebola ao
     lado. Irei abrir a passagem para voc\xEA. Sempre pode voltar a ela para comprar
-    mais nutrientes."
+    mais nutrientes. Cuidado com as pragas, elas atacam no escuro"
   descricaoNoHud: Encontre 5 moedas de ouro para trocar com o Cebola pela abertura
     do caminho e por 5 nutrientes.
   quantidade: 5
