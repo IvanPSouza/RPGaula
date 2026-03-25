@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1962243099, guid: 6419c01d9183e034896fe1a2164ae764, type: 3}
+  m_Sprite: {fileID: 5391621898002228632, guid: f91c3cc50e02a7949b1e83d742a71e0d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,3 +143,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemColetavel
   item: {fileID: 11400000, guid: 702f101cb38700d419932536a9deb420, type: 2}
   quantidade: 1
+  idUnico: 

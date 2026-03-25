@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DadosItem
   nomeDoItem: Nutrientes
   id: Nutrientes
-  icone: {fileID: 1638128710, guid: 6419c01d9183e034896fe1a2164ae764, type: 3}
+  icone: {fileID: 6484461238382986345, guid: 8dedd91d55d9ce849bd4fe73642203d1, type: 3}
   descricao: "Um peda\xE7o massi\xE7o de madeira"
   valorEmOuro: 1
   ehEmpilavel: 1
