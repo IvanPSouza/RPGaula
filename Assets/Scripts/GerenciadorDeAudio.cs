@@ -10,11 +10,14 @@ public class GerenciadorDeAudio : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance != null && instance != this)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject);
+            return;
         }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void TocarMusica(AudioClip musica)
