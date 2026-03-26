@@ -1,9 +1,12 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class VidaInventario : MonoBehaviour
 {
     public Slider sliderVida;
+
+    public TextMeshProUGUI txtVida;
 
     private AtributosCombate atributos;
 
@@ -39,5 +42,6 @@ public class VidaInventario : MonoBehaviour
 
         sliderVida.maxValue = atributos.hpMaximo;
         sliderVida.value = atributos.hpAtual;
+        txtVida.text = $"{atributos.hpAtual}/{atributos.hpMaximo}";
     }
 }

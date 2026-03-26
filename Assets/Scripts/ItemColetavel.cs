@@ -32,13 +32,15 @@ public class ItemColetavel : MonoBehaviour
             //Procura pelo inventario no gerenciador do jogo
             SistemaInventario inventario = FindFirstObjectByType<SistemaInventario>();
 
+            //Empacotando o prefab do inimigo em uma lista
+            DadosGlobais.itensColetados.Add(idUnico);
+
             if (inventario != null)
             {
                 inventario.AdicionarItem(item, quantidade);
+                GerenciadorDeAudio.instance.SomColeta(); //Audio de coleta
                 Destroy(gameObject);
             }
-            //Empacotando o prefab do inimigo em uma lista
-            DadosGlobais.itensColetados.Add(idUnico);
         }
     }
 }

@@ -25,17 +25,18 @@ public class MoedaColetavel : MonoBehaviour
         DadosGlobais.itensColetados.Add(idUnico);
         if (collision.CompareTag("Player"))
         {
-            DadosGlobais.moedasAtualJogador += valorDaMoeda;
-            Destroy(gameObject); // Some da tela!
-        }
-        if (DadosGlobais.QuestAtiva != null)
-        {
-            if (DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.CacarMonstros ||
-                DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.ColetarItens)
+            if (DadosGlobais.QuestAtiva != null)
             {
-                DadosGlobais.progressoAtual++;
-                Debug.Log($"Quest: {DadosGlobais.progressoAtual}/{DadosGlobais.QuestAtiva.quantidade}");
+                if (DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.CacarMonstros ||
+                    DadosGlobais.QuestAtiva.tipoMissao == TipoQuest.ColetarItens)
+                {
+                    DadosGlobais.progressoAtual++;
+                    Debug.Log($"Quest: {DadosGlobais.progressoAtual}/{DadosGlobais.QuestAtiva.quantidade}");
+                }
             }
+            DadosGlobais.moedasAtualJogador += valorDaMoeda;
+            GerenciadorDeAudio.instance.SomColeta(); //Audio de coleta
+            Destroy(gameObject); // Some da tela!
         }
     }
 }

@@ -30,6 +30,9 @@ public class SistemaDeTurnos : MonoBehaviour
     [Header("Texto de feedback")]
     public TextMeshProUGUI textoFeedback;
 
+    [Header("CameraShake")]
+    public EefeitoCamera EefeitoCamera;
+
     private AtributosCombate atributosHeroi;
     private List<AtributosCombate> inimigosVivos = new List<AtributosCombate>();
 
@@ -138,6 +141,7 @@ public class SistemaDeTurnos : MonoBehaviour
 
         AtributosCombate alvo = inimigosVivos[0];
         alvo.ReceberDano(atributosHeroi.danoAtual);
+        EefeitoCamera.instance.TremerTela(0.2f, 0.2f);
 
         textoFeedback.text = $"Você causou {atributosHeroi.danoAtual} de dano";
 
@@ -211,6 +215,7 @@ public class SistemaDeTurnos : MonoBehaviour
 
         AtributosCombate alvo = inimigosVivos[0];
         alvo.ReceberDano(atributosHeroi.danoAtual * 2);
+        EefeitoCamera.instance.TremerTela(0.2f, 0.2f);
 
         if (alvo.hpAtual <= 0)
         {
@@ -304,6 +309,7 @@ public class SistemaDeTurnos : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
             atributosHeroi.ReceberDano(inimigo.danoAtual);
+            EefeitoCamera.instance.TremerTela(0.2f, 0.2f);
 
             if (inimigosVivos.Count > 1)
                 textoFeedback.text = $"Praga {indice} atacou causando {inimigo.danoAtual} de dano";

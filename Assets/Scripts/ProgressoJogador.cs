@@ -1,11 +1,12 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ProgressoJogador : MonoBehaviour
 {
     public int xpAtual = 0;
 
     [Header("Tabela de XP")]
-    public int[] xpNecessariaPorNivel = new int[] { 100, 250, 500, 1000, 5000 };
+    public List<int> xpNecessariaPorNivel = new List<int> { 100, 250, 500, 1000, 5000 };
 
     private AtributosCombate atributos;
 
@@ -13,13 +14,18 @@ public class ProgressoJogador : MonoBehaviour
     {
         atributos = GetComponent<AtributosCombate>();
 
-        // Se tem dados armazenados na memoria global, utilize
+        if (atributos == null)
+        {
+            Debug.LogError("AtributosCombate não encontrado!");
+            return;
+        }
+
+        // Carregar dados globais
         if (DadosGlobais.nivelAtualJogador > 1 || DadosGlobais.xpAtualJogador > 0)
         {
             atributos.nivel = DadosGlobais.nivelAtualJogador;
             xpAtual = DadosGlobais.xpAtualJogador;
 
-            // Força o recalculo do HP e Dano
             atributos.CalcularStatus();
         }
     }
@@ -31,47 +37,55 @@ public class ProgressoJogador : MonoBehaviour
 
         int metaXP = ObterXPProximoNivel();
 
-        if (metaXP > 0 && xpAtual >= metaXP)
+        // Permite subir múltiplos níveis de uma vez
+        while (metaXP > 0 && xpAtual >= metaXP)
         {
             LevelUP(metaXP);
+            metaXP = ObterXPProximoNivel();
         }
     }
 
     void LevelUP(int metaXP)
     {
         atributos.nivel++;
-        xpAtual -= metaXP; // Pega o XP usado e guarda o restante
+        xpAtual -= metaXP;
 
-        // Recalcula os atributos e atualiza a barra de vida
+        // Recalcula atributos
         atributos.CalcularStatus();
         atributos.hpAtual = atributos.hpMaximo;
         atributos.AtualizarBarra();
 
-        Debug.Log($"LEVEL UP! O Heroi alcançou o nivel {atributos.nivel} !");
+        // Salvar progresso
+        DadosGlobais.nivelAtualJogador = atributos.nivel;
+        DadosGlobais.xpAtualJogador = xpAtual;
 
-        // Verifica se o player pode subir mais de um nível seguido
-        GanharXP(0);
+        Debug.Log($"LEVEL UP! O Herói alcançou o nível {atributos.nivel}!");
     }
 
-    int ObterXPProximoNivel()
+    public int ObterXPProximoNivel()
     {
-        int nivelIndex = atributos.nivel - 1;
+        int nivelAtual = atributos.nivel;
+        int nivelIndex = nivelAtual - 1;
 
-        // Se ainda estiver dentro da tabela
-        if (nivelIndex < xpNecessariaPorNivel.Length)
+        // Se já existe na lista
+        if (nivelIndex < xpNecessariaPorNivel.Count)
         {
             return xpNecessariaPorNivel[nivelIndex];
         }
-        else
+
+        // Gerar novos níveis automaticamente
+        while (xpNecessariaPorNivel.Count <= nivelIndex)
         {
-            // Último valor da tabela
-            int ultimoValor = xpNecessariaPorNivel[xpNecessariaPorNivel.Length - 1];
+            int ultimoValor = xpNecessariaPorNivel[xpNecessariaPorNivel.Count - 1];
 
-            // Quantos níveis já passaram da tabela
-            int niveisExtras = nivelIndex - xpNecessariaPorNivel.Length + 1;
+            // Ajuste da progressão (pode mudar 1.5f)
+            int novoValor = Mathf.RoundToInt(ultimoValor * 1.5f);
 
-            // Escala infinita (ajuste o 1.5f se quiser)
-            return Mathf.RoundToInt(ultimoValor * Mathf.Pow(1.5f, niveisExtras));
+            xpNecessariaPorNivel.Add(novoValor);
+
+            Debug.Log($"Novo nível gerado automaticamente: {novoValor} XP");
         }
+
+        return xpNecessariaPorNivel[nivelIndex];
     }
 }

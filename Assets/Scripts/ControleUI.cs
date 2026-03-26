@@ -6,6 +6,7 @@ public class ControleUI : MonoBehaviour
     [Header("Paineis")]
     public GameObject PainelInventario;
     public GameObject PainelCrafting;
+    public GameObject PainelDados;
     public GameObject PainelPause;
 
     public TextMeshProUGUI textoFeedbackCraft;
@@ -20,6 +21,7 @@ public class ControleUI : MonoBehaviour
             if (estaPausado) return;
 
             PainelCrafting.SetActive(false);
+            PainelDados.SetActive(false);
             PainelInventario.SetActive(!PainelInventario.activeSelf);
         }
 
@@ -30,7 +32,19 @@ public class ControleUI : MonoBehaviour
 
             textoFeedbackCraft.text = "...";
             PainelInventario.SetActive(false);
+            PainelDados.SetActive(false);
             PainelCrafting.SetActive(!PainelCrafting.activeSelf);
+        }
+
+        //Dados
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (estaPausado) return;
+
+            textoFeedbackCraft.text = "...";
+            PainelInventario.SetActive(false);
+            PainelCrafting.SetActive(false);
+            PainelDados.SetActive(!PainelDados.activeSelf);
         }
 
         // FECHAR INVENTÁRIO/CRAFTING
@@ -38,7 +52,9 @@ public class ControleUI : MonoBehaviour
         {
             PainelInventario.SetActive(false);
             PainelCrafting.SetActive(false);
+            PainelDados.SetActive(false);
         }
+
 
         // PAUSE (ESC)
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -46,7 +62,7 @@ public class ControleUI : MonoBehaviour
             if (!estaPausado)
             {
                 // Só pausa se nenhum outro painel estiver aberto
-                if (!PainelInventario.activeSelf && !PainelCrafting.activeSelf)
+                if (!PainelInventario.activeSelf && !PainelCrafting.activeSelf && !PainelDados.activeSelf)
                 {
                     Pausar();
                 }
@@ -55,6 +71,7 @@ public class ControleUI : MonoBehaviour
                     // Se algum estiver aberto, apenas fecha eles
                     PainelInventario.SetActive(false);
                     PainelCrafting.SetActive(false);
+                    PainelDados.SetActive(false);
                 }
             }
             else
