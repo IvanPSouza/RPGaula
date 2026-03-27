@@ -34,6 +34,7 @@ public class GluGlubPocao : MonoBehaviour
 
         if (atributosPlayer.hpAtual >= atributosPlayer.hpMaximo)
         {
+            GerenciadorDeAudio.instance.SomClique(); //Audio
             if (textoFeedback != null)
                 textoFeedback.text = "Vida cheia!";
             return;
@@ -47,6 +48,7 @@ public class GluGlubPocao : MonoBehaviour
 
             // Cura o jogador
             atributosPlayer.ReceberCura(50);
+            GerenciadorDeAudio.instance.SomHeal(); //Audio
             DadosGlobais.hpAtualJogador = atributosPlayer.hpAtual;
 
             if (textoFeedback != null)
@@ -54,6 +56,7 @@ public class GluGlubPocao : MonoBehaviour
         }
         else
         {
+            GerenciadorDeAudio.instance.SomClique(); //Audio
             if (textoFeedback != null)
                 textoFeedback.text = "Sem poções!";
         }

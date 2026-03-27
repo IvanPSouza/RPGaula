@@ -18,6 +18,7 @@ public class SistemaDeTurnos : MonoBehaviour
     public Slider slideHeroi;
     public Button btnPocao;
     public Button btnFlecha;
+    public TextMeshProUGUI TextVida;
 
     [Header("Inventário UI")]
     public TextMeshProUGUI textoInventario;
@@ -97,6 +98,7 @@ public class SistemaDeTurnos : MonoBehaviour
         }
 
         AtualizarTextoInventario();
+        AtualizarBarra();
         IniciarTurnoJogador();
     }
 
@@ -133,6 +135,12 @@ public class SistemaDeTurnos : MonoBehaviour
 
         textoInventario.text = $"Poções: {qtdPocoes}\nFlechas: {qtdFlechas}";
     }
+    void AtualizarBarra()
+    {
+        if (atributosHeroi == null) return;
+
+        TextVida.text = $"{atributosHeroi.hpAtual}/{atributosHeroi.hpMaximo}";
+    }
 
     public void BotaoAtacarFraco()
     {
@@ -141,12 +149,14 @@ public class SistemaDeTurnos : MonoBehaviour
 
         AtributosCombate alvo = inimigosVivos[0];
         alvo.ReceberDano(atributosHeroi.danoAtual);
+        GerenciadorDeAudio.instance.SomPunch(); //Audio de coleta
         EefeitoCamera.instance.TremerTela(0.2f, 0.2f);
 
         textoFeedback.text = $"Você causou {atributosHeroi.danoAtual} de dano";
 
         if (alvo.hpAtual <= 0)
         {
+            GerenciadorDeAudio.instance.SomDeath();
             RecompensaInimigo loot = alvo.GetComponent<RecompensaInimigo>();
             ProgressoJogador progresso = atributosHeroi.GetComponent<ProgressoJogador>();
 
@@ -205,6 +215,7 @@ public class SistemaDeTurnos : MonoBehaviour
 
         if (!consumiuFlecha)
         {
+            GerenciadorDeAudio.instance.SomClique();
             textoFeedback.text = "Você não tem flechas para este ataque!";
             return;
         }
@@ -215,10 +226,12 @@ public class SistemaDeTurnos : MonoBehaviour
 
         AtributosCombate alvo = inimigosVivos[0];
         alvo.ReceberDano(atributosHeroi.danoAtual * 2);
+        GerenciadorDeAudio.instance.SomFlecha(); //Audio de coleta
         EefeitoCamera.instance.TremerTela(0.2f, 0.2f);
 
         if (alvo.hpAtual <= 0)
         {
+            GerenciadorDeAudio.instance.SomDeath();
             RecompensaInimigo loot = alvo.GetComponent<RecompensaInimigo>();
             ProgressoJogador progresso = atributosHeroi.GetComponent<ProgressoJogador>();
 
@@ -252,8 +265,15 @@ public class SistemaDeTurnos : MonoBehaviour
             return;
 
         bool consumiu = false;
+        if (atributosHeroi.hpAtual >= atributosHeroi.hpMaximo)
+        {
+            GerenciadorDeAudio.instance.SomClique(); //Audio
+            if (textoFeedback != null)
+                textoFeedback.text = "Vida cheia!";
+            return;
+        }
 
-        foreach (SlotInventario slot in DadosGlobais.inventarioAtual)
+            foreach (SlotInventario slot in DadosGlobais.inventarioAtual)
         {
             if (slot.dadosDoItem == pocaoDeVida && slot.quantidade > 0)
             {
@@ -277,12 +297,14 @@ public class SistemaDeTurnos : MonoBehaviour
         if (consumiu)
         {
             atributosHeroi.ReceberCura(50);
-            textoFeedback.text = "Você bebeu a poção! Recuperou 50 de vida";
+            GerenciadorDeAudio.instance.SomHeal(); //Audio de coleta
+            textoFeedback.text = "Você bebeu a cura! Recuperou 50 de vida";
+            AtualizarBarra();
             VerificarFimDeTurnoJogador();
         }
         else
         {
-            textoFeedback.text = "Você não tem mais poções!";
+            textoFeedback.text = "Você não tem mais curas!";
         }
     }
 
@@ -309,6 +331,8 @@ public class SistemaDeTurnos : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
             atributosHeroi.ReceberDano(inimigo.danoAtual);
+            AtualizarBarra();
+            GerenciadorDeAudio.instance.SomMordida(); //Audio de coleta
             EefeitoCamera.instance.TremerTela(0.2f, 0.2f);
 
             if (inimigosVivos.Count > 1)
@@ -319,7 +343,10 @@ public class SistemaDeTurnos : MonoBehaviour
             indice++;
 
             if (atributosHeroi.hpAtual <= 0)
+            {
+                GerenciadorDeAudio.instance.SomDeath();
                 break;
+            }
         }
 
         yield return new WaitForSeconds(2f);
@@ -352,7 +379,11 @@ public class SistemaDeTurnos : MonoBehaviour
             string mensagem = $"Cenoura venceu!\n+{xpGanhoTotal} XP\n+{ouroGanhoTotal} Ouro";
 
             if (subiuNivel)
+            {
                 mensagem += "\nLEVEL UP!";
+                GerenciadorDeAudio.instance.SomLvlUp();
+                AtualizarBarra();
+            }
 
             textoFeedback.text = mensagem;
 
@@ -365,6 +396,7 @@ public class SistemaDeTurnos : MonoBehaviour
         else
         {
             textoFeedback.text = $"Esse é o fim de Cenoura";
+            //GerenciadorDeAudio.instance.SomDeath();
             yield return new WaitForSeconds(2f);
             SceneManager.LoadScene("GameOver");
         }

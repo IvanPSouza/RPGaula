@@ -22,7 +22,7 @@ public class NPCMercador : MonoBehaviour
             AbrirLoja();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.P))
         {
             FecharLoja();
         }
@@ -31,6 +31,7 @@ public class NPCMercador : MonoBehaviour
     public void AbrirLoja()
     {
         painelLoja.SetActive(true);
+        GerenciadorDeAudio.instance.SomBlaBlaBla(); //Audio
         textoFeedback.text = "Seja bem-vinda!\ngostaria de alguns nutrientes?";
         nutriComprados = 0;
     }

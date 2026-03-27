@@ -32,6 +32,7 @@ public class NPCQuest : MonoBehaviour
         AtualizarIconeVisual();
         if (jogadorPerto && (Input.GetKeyDown(KeyCode.E) /*|| Input.GetKeyDown(KeyCode.Space)*/))
         {
+            GerenciadorDeAudio.instance.SomBlaBlaBla(); //Audio
             Interagir();
         }
     }

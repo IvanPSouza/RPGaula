@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &104732282
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4366511165806561321, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_Name
+      value: GerenciadorDeAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789431083993417800, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789431083993417800, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.78467
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789431083993417800, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789431083993417800, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789431083993417800, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789431083993417800, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789431083993417800, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789431083993417800, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789431083993417800, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789431083993417800, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 61bb14426bd6339409d8e7c49a34ab97, type: 3}
 --- !u!1 &135681485
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +255,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &298939805
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1619748661053651450, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_Name
+      value: Clique
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781100446760764380, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781100446760764380, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.78467
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781100446760764380, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781100446760764380, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781100446760764380, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781100446760764380, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781100446760764380, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781100446760764380, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781100446760764380, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781100446760764380, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
 --- !u!1 &365244820
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,6 +1093,17 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1151421163 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5672678007104249107, guid: af7323cea6b26d14d9fb8c2ac8fc3873, type: 3}
+  m_PrefabInstance: {fileID: 298939805}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1c4c46ca93823409f042668d10c18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApertaBotao
 --- !u!1 &1318874109
 GameObject:
   m_ObjectHideFlags: 0
@@ -10453,6 +10578,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1151421163}
+        m_TargetAssemblyTypeName: ApertaBotao, Assembly-CSharp
+        m_MethodName: Clique
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2005407906}
         m_TargetAssemblyTypeName: MenuControls, Assembly-CSharp
         m_MethodName: FecharJogo
@@ -10556,3 +10693,5 @@ SceneRoots:
   - {fileID: 2005407907}
   - {fileID: 889861843}
   - {fileID: 135681488}
+  - {fileID: 298939805}
+  - {fileID: 104732282}
