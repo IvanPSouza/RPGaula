@@ -174,6 +174,7 @@ public class SistemaDeTurnos : MonoBehaviour
                 if (atributosHeroi.nivel > nivelAntes)
                 {
                     subiuNivel = true;
+                    AtualizarBarra();
                     nivelAntes = atributosHeroi.nivel;
                 }
             }
@@ -249,6 +250,7 @@ public class SistemaDeTurnos : MonoBehaviour
                 if (atributosHeroi.nivel > nivelAntes)
                 {
                     subiuNivel = true;
+                    AtualizarBarra();
                     nivelAntes = atributosHeroi.nivel;
                 }
             }
