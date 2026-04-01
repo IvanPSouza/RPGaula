@@ -24,11 +24,11 @@ public class MenuControls : MonoBehaviour
     {
         Debug.Log("Fechando o jogo...");
 
-        Application.Quit();
-
         // Isso aqui é só para funcionar no Editor da Unity
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
 #endif
     }
 }
